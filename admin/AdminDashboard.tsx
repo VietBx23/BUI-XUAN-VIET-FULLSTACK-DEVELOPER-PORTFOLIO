@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { User, LogOut, BarChart3, Settings, Bell, Search, Moon, Sun, Zap, Activity, Briefcase, Eye, Home, Menu, X } from 'lucide-react';
+import { User, LogOut, BarChart3, Settings, Bell, Search, Moon, Sun, Zap, Activity, Briefcase, Eye, Home, Menu, X, Mail } from 'lucide-react';
 import LoginForm from './LoginForm';
 import PersonalInfoManagerSmooth from './PersonalInfoManagerSmooth';
 import ExperienceManager from './ExperienceManager';
@@ -9,6 +9,7 @@ import EducationManager from './EducationManager';
 
 import DashboardOverview from './DashboardOverview';
 import AnalyticsManager from './AnalyticsManager';
+import ContactManager from './ContactManager';
 
 
 interface AdminUser {
@@ -77,6 +78,7 @@ const AdminDashboard: React.FC = () => {
   const tabs = [
     { id: 'overview', label: 'Overview', icon: BarChart3, color: 'blue', description: 'Dashboard & analytics' },
     { id: 'analytics', label: 'Analytics', icon: Activity, color: 'purple', description: 'Website statistics' },
+    { id: 'contact', label: 'Contact Messages', icon: Mail, color: 'green', description: 'Manage contact form messages' },
     { id: 'personal', label: 'Personal Info', icon: User, color: 'emerald', description: 'Manage contact & bio' },
     { id: 'experience', label: 'Experience', icon: Briefcase, color: 'blue', description: 'Work history & roles' },
     { id: 'projects', label: 'Projects', icon: Zap, color: 'orange', description: 'Portfolio showcase' },
@@ -90,7 +92,8 @@ const AdminDashboard: React.FC = () => {
       blue: isActive ? 'bg-blue-500 text-white shadow-blue-500/25' : 'text-blue-600 dark:text-blue-400 hover:bg-blue-500/10',
       purple: isActive ? 'bg-purple-500 text-white shadow-purple-500/25' : 'text-purple-600 dark:text-purple-400 hover:bg-purple-500/10',
       orange: isActive ? 'bg-orange-500 text-white shadow-orange-500/25' : 'text-orange-600 dark:text-orange-400 hover:bg-orange-500/10',
-      pink: isActive ? 'bg-pink-500 text-white shadow-pink-500/25' : 'text-pink-600 dark:text-pink-400 hover:bg-pink-500/10'
+      pink: isActive ? 'bg-pink-500 text-white shadow-pink-500/25' : 'text-pink-600 dark:text-pink-400 hover:bg-pink-500/10',
+      green: isActive ? 'bg-green-500 text-white shadow-green-500/25' : 'text-green-600 dark:text-green-400 hover:bg-green-500/10'
     };
     return colors[color as keyof typeof colors] || colors.emerald;
   };
@@ -333,6 +336,9 @@ const AdminDashboard: React.FC = () => {
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
               {activeTab === 'overview' && <DashboardOverview />}
               {activeTab === 'analytics' && <AnalyticsManager />}
+              {activeTab === 'contact' && (
+                <ContactManager onDataChange={setHasUnsavedChanges} />
+              )}
               {activeTab === 'personal' && (
                 <PersonalInfoManagerSmooth onDataChange={setHasUnsavedChanges} />
               )}

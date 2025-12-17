@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, Github, Send, ArrowRight, Loader2 } from 'lucide-react';
+import { Mail, Phone, Github, ArrowRight, Loader2 } from 'lucide-react';
 import { PERSONAL_INFO } from '../constants';
 
 const Footer: React.FC = () => {
@@ -23,38 +23,44 @@ const Footer: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // OPTION 1: Web3Forms (Đơn giản nhất - chỉ cần Access Key)
-      const formData = new FormData();
-      formData.append('access_key', '12017009-d225-41d4-a457-f71f058e81b6'); // Web3Forms Access Key
-      formData.append('name', formState.name);
-      formData.append('email', formState.email);
-      formData.append('subject', formState.subject);
-      formData.append('message', formState.message);
+      // Xử lý form contact bằng JavaScript - Lưu vào localStorage
+      const contactMessage = {
+        id: Date.now().toString() + Math.random().toString(36).substring(2, 11),
+        name: formState.name,
+        email: formState.email,
+        subject: formState.subject,
+        message: formState.message,
+        timestamp: Date.now(),
+        isRead: false,
+        isStarred: false
+      };
+
+      // Lấy messages hiện có từ localStorage
+      const existingMessages = localStorage.getItem('portfolio_contact_messages');
+      let messages = [];
       
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-      });
-      
-      // OPTION 2: Nếu muốn dùng EmailJS, uncomment phần dưới và comment phần trên
-      /*
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          service_id: 'service_viet_portfolio',
-          template_id: 'template_contact_form', 
-          user_id: 'YOUR_EMAILJS_PUBLIC_KEY',
-          template_params: {
-            from_name: formState.name,
-            from_email: formState.email,
-            subject: formState.subject,
-            message: formState.message,
-            to_email: 'vietbx23@gmail.com'
-          }
-        })
-      });
-      */
+      if (existingMessages) {
+        try {
+          messages = JSON.parse(existingMessages);
+        } catch (error) {
+          console.error('Error parsing existing messages:', error);
+          messages = [];
+        }
+      }
+
+      // Thêm message mới vào đầu array
+      messages.unshift(contactMessage);
+
+      // Giới hạn chỉ lưu 100 messages gần nhất
+      if (messages.length > 100) {
+        messages = messages.slice(0, 100);
+      }
+
+      // Lưu lại vào localStorage
+      localStorage.setItem('portfolio_contact_messages', JSON.stringify(messages));
+
+      // Tạo response giả để tương thích với code hiện tại
+      const response = { ok: true };
 
       if (response.ok) {
         // Thành công - reset form và hiển thị thông báo
@@ -64,7 +70,7 @@ const Footer: React.FC = () => {
         const successMessage = document.createElement('div');
         successMessage.innerHTML = `
           <div style="position: fixed; top: 20px; right: 20px; background: #10b981; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); z-index: 9999; font-weight: 600;">
-            ✅ Message sent successfully! I'll get back to you soon.
+            ✅ Message saved successfully! Check admin dashboard to view.
           </div>
         `;
         document.body.appendChild(successMessage);
@@ -72,31 +78,32 @@ const Footer: React.FC = () => {
         setTimeout(() => {
           document.body.removeChild(successMessage);
         }, 5000);
+
+        // Log để debug
+        console.log('Contact message saved:', contactMessage);
+        console.log('Total messages:', messages.length);
       } else {
-        throw new Error('Failed to send message');
+        throw new Error('Failed to save message');
       }
     } catch (error) {
       console.error('Error sending email:', error);
       
-      // Fallback về mailto
-      const subject = encodeURIComponent(formState.subject || `Portfolio Contact from ${formState.name}`);
-      const body = encodeURIComponent(
-        `Name: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`
-      );
+      // Log error for debugging
       
-      // Hiển thị thông báo fallback
-      const fallbackMessage = document.createElement('div');
-      fallbackMessage.innerHTML = `
-        <div style="position: fixed; top: 20px; right: 20px; background: #f59e0b; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3); z-index: 9999; font-weight: 600;">
-          📧 Opening your email client...
+      // Hiển thị thông báo lỗi
+      const errorMessage = document.createElement('div');
+      errorMessage.innerHTML = `
+        <div style="position: fixed; top: 20px; right: 20px; background: #ef4444; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3); z-index: 9999; font-weight: 600;">
+          ❌ Failed to save message. Please try again.
         </div>
       `;
-      document.body.appendChild(fallbackMessage);
+      document.body.appendChild(errorMessage);
       
       setTimeout(() => {
-        document.body.removeChild(fallbackMessage);
-        window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${body}`;
-      }, 1500);
+        document.body.removeChild(errorMessage);
+      }, 5000);
+
+      console.error('Error saving contact message:', error);
     }
     
     setIsSubmitting(false);
