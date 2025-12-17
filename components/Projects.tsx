@@ -4,51 +4,11 @@ import { PROJECTS } from '../constants';
 import { LinkData } from '../types';
 import RevealOnScroll from './RevealOnScroll';
 
-// --- 3D Tilt Wrapper ---
-const ProjectCard3D: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => {
-    const cardRef = useRef<HTMLDivElement>(null);
-    const [rotation, setRotation] = useState({ x: 0, y: 0 });
-    const [isHovering, setIsHovering] = useState(false);
-
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!cardRef.current) return;
-        const rect = cardRef.current.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-        const xPct = mouseX / width - 0.5;
-        const yPct = mouseY / height - 0.5;
-        // Limit rotation for subtle effect
-        const rotateY = xPct * 3; 
-        const rotateX = yPct * -3;
-        setRotation({ x: rotateX, y: rotateY });
-    };
-
-    const handleMouseEnter = () => setIsHovering(true);
-    const handleMouseLeave = () => {
-        setIsHovering(false);
-        setRotation({ x: 0, y: 0 });
-    };
-
+// --- Simple Card Wrapper ---
+const ProjectCard: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => {
     return (
-        <div
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className={`perspective-1000 ${className}`}
-            style={{ perspective: '1000px' }}
-        >
-            <div
-                className="transition-transform duration-500 ease-out transform-style-3d w-full h-full"
-                style={{
-                    transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) scale(${isHovering ? 1.01 : 1})`,
-                    transformStyle: 'preserve-3d',
-                }}
-            >
-                {children}
-            </div>
+        <div className={className}>
+            {children}
         </div>
     );
 };
@@ -100,8 +60,7 @@ const ImageSlider: React.FC<{ images: string[]; title: string }> = ({ images, ti
     return (
         <div 
             className="absolute inset-0 w-full h-full group/slider"
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
+
         >
             {/* Images - Sliding Effect */}
             {images.map((img, idx) => (
@@ -125,7 +84,7 @@ const ImageSlider: React.FC<{ images: string[]; title: string }> = ({ images, ti
                         <img 
                             src={img} 
                             alt={`${title} - slide ${idx + 1}`}
-                            className="w-full h-full object-cover transform transition-transform duration-[10000ms] ease-linear scale-105 group-hover/slider:scale-110" // Slow zoom effect
+                            className="w-full h-full object-cover"
                             loading="lazy"
                             onError={() => handleImageError(idx)}
                         />
@@ -140,13 +99,13 @@ const ImageSlider: React.FC<{ images: string[]; title: string }> = ({ images, ti
                 <>
                     <button 
                         onClick={prevSlide}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 text-white backdrop-blur-sm opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-black/50 hover:scale-110 duration-200"
+                        className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 text-white backdrop-blur-sm opacity-0 group-hover/slider:opacity-100 transition-opacity duration-200"
                     >
                         <ChevronLeft size={20} />
                     </button>
                     <button 
                         onClick={nextSlide}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 text-white backdrop-blur-sm opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-black/50 hover:scale-110 duration-200"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 text-white backdrop-blur-sm opacity-0 group-hover/slider:opacity-100 transition-opacity duration-200"
                     >
                         <ChevronRight size={20} />
                     </button>
@@ -246,8 +205,8 @@ const Projects: React.FC = () => {
                         
                         {/* Visual Side with Slider */}
                         <div className="w-full lg:w-[60%] perspective-1000">
-                             <ProjectCard3D>
-                                <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#050914] shadow-2xl dark:shadow-black/50 group-hover:shadow-emerald-500/10 group-hover:border-emerald-500/30 transition-all duration-500 aspect-video group">
+                             <ProjectCard>
+                                <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#050914] shadow-2xl dark:shadow-black/50 transition-all duration-500 aspect-video group">
                                     
                                     {/* Image Carousel */}
                                     <ImageSlider images={project.images || []} title={project.title} />
@@ -255,7 +214,7 @@ const Projects: React.FC = () => {
                                     {/* Glass Shine Effect (on top of slider) */}
                                     <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-30"></div>
                                 </div>
-                             </ProjectCard3D>
+                             </ProjectCard>
                         </div>
 
                         {/* Content Side */}
@@ -308,7 +267,7 @@ const Projects: React.FC = () => {
                                         <span className="relative flex items-center gap-2">
                                             {renderLinkIcon(link.type)}
                                             {link.label}
-                                            <ArrowUpRight className="w-4 h-4 opacity-50 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                                            <ArrowUpRight className="w-4 h-4 opacity-50" />
                                         </span>
                                     </a>
                                     ))

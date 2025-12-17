@@ -10,6 +10,8 @@ import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
 import AdminDashboard from './admin/AdminDashboard';
 
+import CursorTrail from './components/CursorTrail';
+
 // Complete Admin Dashboard with Management Features
 const CompleteAdminDashboard = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -265,6 +267,8 @@ function App() {
         <Footer />
         <FloatingActions />
       </div>
+      <CursorTrail />
+
     </div>
   );
 }

@@ -183,6 +183,114 @@
         z-index: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.5s;
       }
       .magic-card:hover .magic-border::after { opacity: 1; }
+
+      /* Enhanced Mouse Cursor Effects */
+      * {
+        cursor: none !important;
+      }
+      
+      /* Hover states for interactive elements */
+      a, button, [role="button"], input, textarea, select, [tabindex]:not([tabindex="-1"]) {
+        position: relative;
+      }
+      
+      /* Magnetic effect for buttons */
+      .magnetic-hover {
+        transition: transform 0.2s ease;
+      }
+      
+      /* Glow effect on hover */
+      .glow-on-hover {
+        transition: box-shadow 0.3s ease;
+      }
+      
+      .glow-on-hover:hover {
+        box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+      }
+      
+      /* Text selection with custom cursor */
+      ::selection {
+        background: rgba(16, 185, 129, 0.3);
+        color: inherit;
+      }
+      
+      /* Smooth cursor transitions */
+      html {
+        cursor: none !important;
+      }
+      
+      body {
+        cursor: none !important;
+      }
+      
+      /* Custom scrollbar with cursor effects */
+      ::-webkit-scrollbar {
+        cursor: none !important;
+      }
+      
+      /* DISABLE ALL ANIMATIONS AND EFFECTS */
+      *, *::before, *::after {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+      }
+
+      /* Remove specific animation classes */
+      .animate-pulse,
+      .animate-spin,
+      .animate-bounce,
+      .animate-ping,
+      .animate-shimmer,
+      .animate-meteor,
+      .animate-float,
+      .animate-pulse-slow,
+      .animate-in {
+        animation: none !important;
+      }
+
+      /* Remove hover transforms and scales */
+      .hover\:scale-\[1\.02\]:hover,
+      .hover\:scale-\[1\.05\]:hover,
+      .hover\:scale-110:hover,
+      .hover\:scale-105:hover,
+      .group-hover\:scale-110,
+      .group-hover\:scale-105,
+      .group-hover\:translate-x-1,
+      .group-hover\:translate-y-1,
+      .group-hover\:-translate-y-1,
+      .group-hover\:translate-x-0\.5,
+      .group-hover\:-translate-y-0\.5,
+      .group-hover\:rotate-12,
+      .group-hover\:rotate-90,
+      .hover\:rotate-180 {
+        transform: none !important;
+      }
+
+      /* Remove perspective and 3D transforms */
+      .perspective-1000,
+      .transform-style-3d {
+        perspective: none !important;
+        transform-style: flat !important;
+      }
+
+      /* Disable all CSS transforms on hover */
+      *:hover {
+        transform: none !important;
+      }
+      
+      /* Enable normal cursor */
+      * {
+        cursor: auto !important;
+      }
+      
+      a, button, [role="button"] {
+        cursor: pointer !important;
+      }
+      
+      input, textarea, select {
+        cursor: text !important;
+      }
     </style>
   <script type="importmap">
 {
@@ -197,6 +305,7 @@
 }
 </script>
 <link rel="stylesheet" href="/index.css">
+
 </head>
   <body>
     <div class="bg-noise"></div>

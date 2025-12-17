@@ -10,6 +10,7 @@ import EducationManager from './EducationManager';
 import DashboardOverview from './DashboardOverview';
 import AnalyticsManager from './AnalyticsManager';
 
+
 interface AdminUser {
   username: string;
   isAuthenticated: boolean;
@@ -351,6 +352,7 @@ const AdminDashboard: React.FC = () => {
           </div>
         </main>
       </div>
+
     </div>
   );
 };

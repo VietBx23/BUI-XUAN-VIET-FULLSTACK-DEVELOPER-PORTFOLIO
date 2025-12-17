@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Lock, User, Eye, EyeOff, Shield } from 'lucide-react';
 
+
 interface LoginFormProps {
   onLogin: (username: string) => void;
 }
@@ -144,10 +145,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 disabled:from-emerald-500/50 disabled:to-teal-600/50 text-white font-bold py-4 rounded-2xl transition-all duration-300 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-[0.98] relative overflow-hidden group"
+              className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 disabled:from-emerald-500/50 disabled:to-teal-600/50 text-white font-bold py-4 rounded-2xl transition-all duration-300 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/25 relative overflow-hidden group"
             >
               {/* Button Background Animation */}
-              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+
               
               {isLoading ? (
                 <>
@@ -163,7 +164,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
             </button>
           </form>
 
-          {/* Demo Credentials */}
+          {/* Demo Credentials
           <div className="mt-8 p-5 bg-slate-800/30 backdrop-blur-sm rounded-2xl border border-slate-700/30 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-blue-500/5"></div>
             <div className="relative z-10">
@@ -182,19 +183,20 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Footer */}
         <div className="text-center mt-8 text-slate-400 text-sm">
           <div className="flex items-center justify-center gap-2 mb-2">
             <div className="w-1 h-1 bg-slate-500 rounded-full"></div>
-            <p>© 2024 Bui Xuan Viet Portfolio Admin</p>
+            <p>© 2025 Bui Xuan Viet Portfolio Admin</p>
             <div className="w-1 h-1 bg-slate-500 rounded-full"></div>
           </div>
           <p className="text-xs text-slate-500">Secure • Modern • Efficient</p>
         </div>
       </div>
+
     </div>
   );
 };

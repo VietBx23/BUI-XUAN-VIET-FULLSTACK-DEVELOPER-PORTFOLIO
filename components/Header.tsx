@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon, Facebook, MessageCircle, Send, Phone } from 'lucide-react';
 import { PERSONAL_INFO } from '../constants';
 
+
 const Header: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -193,7 +194,7 @@ const Header: React.FC = () => {
                 {/* Divider */}
                 <div className="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1"></div>
 
-                {/* Theme Toggle Button (Moved here) */}
+                {/* Theme Toggle Button */}
                 <button 
                     onClick={toggleTheme}
                     className="p-2 rounded-full bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-emerald-500 hover:bg-white dark:hover:bg-slate-700 transition-all"
