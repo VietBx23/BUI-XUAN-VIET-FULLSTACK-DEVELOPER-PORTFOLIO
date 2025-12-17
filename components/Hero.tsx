@@ -126,7 +126,7 @@ const Hero: React.FC = () => {
                                     <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
                                 </div>
                                 <div className="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-2">
-                                    <Command className="w-3 h-3" /> viet_core.ts
+                                    <Command className="w-3 h-3" /> BUI XUAN VIET - FULL STACK DEVELOPER
                                 </div>
                             </div>
                             
@@ -134,9 +134,7 @@ const Hero: React.FC = () => {
                             <div className="flex-1 p-6 font-mono text-sm leading-relaxed overflow-hidden relative">
                                 <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100%_24px] pointer-events-none"></div>
                                 <div className="relative z-10 space-y-1">
-                                    <div className="text-slate-400 dark:text-slate-500">/**</div>
-                                    <div className="text-slate-400 dark:text-slate-500"> * Core configuration for system architecture</div>
-                                    <div className="text-slate-400 dark:text-slate-500"> */</div>
+                                   
                                     <div className="flex gap-2">
                                         <span className="text-purple-600 dark:text-purple-400">import</span> 
                                         <span className="text-slate-800 dark:text-white">{'{'}</span>
@@ -151,11 +149,11 @@ const Hero: React.FC = () => {
                                     <div className="flex gap-2">
                                         <span className="text-slate-800 dark:text-white">{'}'}</span>
                                         <span className="text-purple-600 dark:text-purple-400">from</span>
-                                        <span className="text-emerald-600 dark:text-emerald-400">'@viet/core'</span>;
+                                        <span className="text-emerald-600 dark:text-emerald-400">'@XuanViet/Developer'</span>;
                                     </div>
                                     
                                     <div className="h-4"></div>
-                                    <div className="text-slate-400 dark:text-slate-500">// Defining the core stack</div>
+                                    {/* <div className="text-slate-400 dark:text-slate-500">// Defining the core stack</div> */}
                                     
                                     <div>
                                         <span className="text-blue-600 dark:text-blue-400">const</span> <span className="text-yellow-600 dark:text-yellow-300">TechStack</span> <span className="text-slate-800 dark:text-white">=</span> <span className="text-slate-800 dark:text-white">[</span>
@@ -163,6 +161,7 @@ const Hero: React.FC = () => {
                                     <div className="pl-6 text-emerald-600 dark:text-emerald-400">'Java Spring Boot'<span className="text-slate-400 dark:text-slate-500">,</span></div>
                                     <div className="pl-6 text-emerald-600 dark:text-emerald-400">'.NET Core'<span className="text-slate-400 dark:text-slate-500">,</span></div>
                                     <div className="pl-6 text-emerald-600 dark:text-emerald-400">'React / Next.js'<span className="text-slate-400 dark:text-slate-500">,</span></div>
+                                    <div className="pl-6 text-emerald-600 dark:text-emerald-400">'PHP / Python'<span className="text-slate-400 dark:text-slate-500">,</span></div>
                                     <div className="pl-6 text-emerald-600 dark:text-emerald-400">'Cloud Infrastructure'</div>
                                     <div className="text-slate-800 dark:text-white">];</div>
                                     
@@ -203,14 +202,14 @@ const Hero: React.FC = () => {
 
                         <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-3xl flex flex-col items-center justify-center gap-3 shadow-xl animate-float z-30" style={{animationDelay: '1.5s'}}>
                             <Globe className="w-10 h-10 text-blue-500 dark:text-blue-400" />
-                            <span className="text-sm font-bold text-slate-800 dark:text-white uppercase tracking-wider">Web</span>
+                            <span className="text-sm font-bold text-slate-800 dark:text-white uppercase tracking-wider">WEB</span>
                         </div>
 
                         <div className="absolute top-1/2 -right-20 w-44 h-24 bg-emerald-500/90 backdrop-blur-md rounded-2xl flex items-center justify-center gap-4 shadow-[0_0_30px_rgba(16,185,129,0.3)] animate-float z-40" style={{animationDelay: '0.5s'}}>
                             <Cpu className="w-10 h-10 text-white dark:text-slate-900" />
                             <div className="flex flex-col">
-                                <span className="text-sm font-black text-white dark:text-slate-900 uppercase">System</span>
-                                <span className="text-xs font-bold text-white/90 dark:text-slate-800">Optimized</span>
+                                <span className="text-sm font-black text-white dark:text-slate-900 uppercase">FULLSTACK</span>
+                                <span className="text-xs font-bold text-white/90 dark:text-slate-800">DEVELOPER</span>
                             </div>
                         </div>
 

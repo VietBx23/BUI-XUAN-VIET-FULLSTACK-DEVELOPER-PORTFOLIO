@@ -22,22 +22,84 @@ const Footer: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate network delay for UX
-    await new Promise(resolve => setTimeout(resolve, 800));
-    
-    // NOTE: Direct SMTP usage (Spring Mail) is not possible in a browser-only environment due to security risks (exposing passwords).
-    // We use the robust `mailto` approach to ensure the email is composed and sent via the user's trusted client.
-    // This guarantees delivery to vietbx23@gmail.com without needing a backend server.
-    
-    const subject = encodeURIComponent(formState.subject || `Portfolio Contact from ${formState.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`
-    );
-    
-    window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${body}`;
+    try {
+      // OPTION 1: Web3Forms (Đơn giản nhất - chỉ cần Access Key)
+      const formData = new FormData();
+      formData.append('access_key', '12017009-d225-41d4-a457-f71f058e81b6'); // Web3Forms Access Key
+      formData.append('name', formState.name);
+      formData.append('email', formState.email);
+      formData.append('subject', formState.subject);
+      formData.append('message', formState.message);
+      
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      
+      // OPTION 2: Nếu muốn dùng EmailJS, uncomment phần dưới và comment phần trên
+      /*
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service_id: 'service_viet_portfolio',
+          template_id: 'template_contact_form', 
+          user_id: 'YOUR_EMAILJS_PUBLIC_KEY',
+          template_params: {
+            from_name: formState.name,
+            from_email: formState.email,
+            subject: formState.subject,
+            message: formState.message,
+            to_email: 'vietbx23@gmail.com'
+          }
+        })
+      });
+      */
+
+      if (response.ok) {
+        // Thành công - reset form và hiển thị thông báo
+        setFormState({ name: '', email: '', subject: '', message: '' });
+        
+        // Hiển thị thông báo thành công đẹp hơn
+        const successMessage = document.createElement('div');
+        successMessage.innerHTML = `
+          <div style="position: fixed; top: 20px; right: 20px; background: #10b981; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); z-index: 9999; font-weight: 600;">
+            ✅ Message sent successfully! I'll get back to you soon.
+          </div>
+        `;
+        document.body.appendChild(successMessage);
+        
+        setTimeout(() => {
+          document.body.removeChild(successMessage);
+        }, 5000);
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      
+      // Fallback về mailto
+      const subject = encodeURIComponent(formState.subject || `Portfolio Contact from ${formState.name}`);
+      const body = encodeURIComponent(
+        `Name: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`
+      );
+      
+      // Hiển thị thông báo fallback
+      const fallbackMessage = document.createElement('div');
+      fallbackMessage.innerHTML = `
+        <div style="position: fixed; top: 20px; right: 20px; background: #f59e0b; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3); z-index: 9999; font-weight: 600;">
+          📧 Opening your email client...
+        </div>
+      `;
+      document.body.appendChild(fallbackMessage);
+      
+      setTimeout(() => {
+        document.body.removeChild(fallbackMessage);
+        window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${body}`;
+      }, 1500);
+    }
     
     setIsSubmitting(false);
-    setFormState({ name: '', email: '', subject: '', message: '' });
   };
 
   return (

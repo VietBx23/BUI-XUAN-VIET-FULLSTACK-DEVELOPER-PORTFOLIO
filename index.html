@@ -277,8 +277,11 @@
         transform-style: flat !important;
       }
       
-      /* Disable only mouse-following animations */
-      .animate-meteor,
+      /* Keep meteor animation but disable mouse-following */
+      .animate-meteor {
+        animation: meteor 5s linear infinite !important;
+      }
+      
       .animate-float {
         animation: none !important;
       }
