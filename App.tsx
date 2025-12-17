@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,7 +11,7 @@ import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
 import AdminDashboard from './admin/AdminDashboard';
 
-import CursorTrail from './components/CursorTrail';
+
 
 // Complete Admin Dashboard with Management Features
 const CompleteAdminDashboard = () => {
@@ -212,12 +213,8 @@ const CompleteAdminDashboard = () => {
   );
 };
 
-function App() {
-  // Check if we're on admin route - simple check
-  if (window.location.pathname === '/admin') {
-    return <AdminDashboard />;
-  }
-
+// Portfolio Component
+const Portfolio: React.FC = () => {
   // Generate static twinkling stars (Global)
   const stars = useMemo(() => new Array(70).fill(true).map((_, idx) => ({
     left: Math.floor(Math.random() * 100) + '%',
@@ -267,9 +264,19 @@ function App() {
         <Footer />
         <FloatingActions />
       </div>
-      <CursorTrail />
-
     </div>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Portfolio />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="*" element={<Portfolio />} />
+      </Routes>
+    </Router>
   );
 }
 
