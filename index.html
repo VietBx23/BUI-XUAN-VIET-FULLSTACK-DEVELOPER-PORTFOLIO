@@ -76,6 +76,26 @@
               spin: {
                   "0%": { transform: "rotate(0deg)" },
                   "100%": { transform: "rotate(360deg)" },
+              },
+              pulse: {
+                  "0%, 100%": { opacity: "1" },
+                  "50%": { opacity: "0.5" },
+              },
+              bounce: {
+                  "0%, 100%": { 
+                    transform: "translateY(-25%)",
+                    animationTimingFunction: "cubic-bezier(0.8, 0, 1, 1)"
+                  },
+                  "50%": { 
+                    transform: "translateY(0)",
+                    animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)"
+                  },
+              },
+              ping: {
+                  "75%, 100%": { 
+                    transform: "scale(2)",
+                    opacity: "0"
+                  },
               }
             }
           }
@@ -232,30 +252,9 @@
         cursor: none !important;
       }
       
-      /* DISABLE MOUSE EFFECTS BUT KEEP TEXT ANIMATIONS */
+      /* ONLY DISABLE SPECIFIC MOUSE HOVER EFFECTS - KEEP ALL TEXT ANIMATIONS */
       
-      /* Keep text animations - allow shimmer, gradient effects */
-      .animate-shimmer {
-        animation: shimmer 2s linear infinite !important;
-      }
-      
-      /* Keep loading animations */
-      .animate-spin {
-        animation: spin 1s linear infinite !important;
-      }
-      
-      /* Disable other animations */
-      .animate-pulse,
-      .animate-bounce,
-      .animate-ping,
-      .animate-meteor,
-      .animate-float,
-      .animate-pulse-slow,
-      .animate-in {
-        animation: none !important;
-      }
-
-      /* Remove hover transforms and scales */
+      /* Disable only mouse hover transforms */
       .hover\:scale-\[1\.02\]:hover,
       .hover\:scale-\[1\.05\]:hover,
       .hover\:scale-110:hover,
@@ -273,27 +272,17 @@
         transform: none !important;
       }
 
-      /* Remove perspective and 3D transforms */
+      /* Remove 3D perspective effects */
       .perspective-1000,
       .transform-style-3d {
         perspective: none !important;
         transform-style: flat !important;
       }
-
-      /* Disable transforms on hover but keep text effects */
-      *:hover {
-        transform: none !important;
-      }
       
-      /* Allow text gradient and color transitions */
-      .bg-gradient-to-r,
-      .bg-clip-text,
-      .text-transparent,
-      .animate-shimmer {
-        animation: inherit !important;
-        background: inherit !important;
-        -webkit-background-clip: inherit !important;
-        background-clip: inherit !important;
+      /* Disable only mouse-following animations */
+      .animate-meteor,
+      .animate-float {
+        animation: none !important;
       }
       
       /* Enable normal cursor */
