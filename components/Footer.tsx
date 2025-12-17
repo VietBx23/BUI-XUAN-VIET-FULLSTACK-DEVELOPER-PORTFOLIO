@@ -66,18 +66,18 @@ const Footer: React.FC = () => {
         // Thành công - reset form và hiển thị thông báo
         setFormState({ name: '', email: '', subject: '', message: '' });
         
-        // Hiển thị thông báo thành công đẹp hơn
+        // Hiển thị thông báo thành công ngắn gọn
         const successMessage = document.createElement('div');
         successMessage.innerHTML = `
           <div style="position: fixed; top: 20px; right: 20px; background: #10b981; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); z-index: 9999; font-weight: 600;">
-            ✅ Message saved successfully! Check admin dashboard to view.
+            ✅ Send successful
           </div>
         `;
         document.body.appendChild(successMessage);
         
         setTimeout(() => {
           document.body.removeChild(successMessage);
-        }, 5000);
+        }, 3000);
 
         // Log để debug
         console.log('Contact message saved:', contactMessage);

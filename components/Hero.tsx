@@ -158,11 +158,11 @@ const Hero: React.FC = () => {
                                     <div>
                                         <span className="text-blue-600 dark:text-blue-400">const</span> <span className="text-yellow-600 dark:text-yellow-300">TechStack</span> <span className="text-slate-800 dark:text-white">=</span> <span className="text-slate-800 dark:text-white">[</span>
                                     </div>
-                                    <div className="pl-6 text-emerald-600 dark:text-emerald-400">'Java Spring Boot'<span className="text-slate-400 dark:text-slate-500">,</span></div>
-                                    <div className="pl-6 text-emerald-600 dark:text-emerald-400">'.NET Core'<span className="text-slate-400 dark:text-slate-500">,</span></div>
-                                    <div className="pl-6 text-emerald-600 dark:text-emerald-400">'React / Next.js'<span className="text-slate-400 dark:text-slate-500">,</span></div>
-                                    <div className="pl-6 text-emerald-600 dark:text-emerald-400">'PHP / Python'<span className="text-slate-400 dark:text-slate-500">,</span></div>
-                                    <div className="pl-6 text-emerald-600 dark:text-emerald-400">'Cloud Infrastructure'</div>
+                                    <div className="pl-6 text-emerald-600 dark:text-emerald-400">'Java Spring Boot | .NET Core '<span className="text-slate-400 dark:text-slate-500">,</span></div>
+                                    <div className="pl-6 text-emerald-600 dark:text-emerald-400">'Python | PHP'<span className="text-slate-400 dark:text-slate-500">,</span></div>
+                                    <div className="pl-6 text-emerald-600 dark:text-emerald-400">'React | Next.js | ReactNative'<span className="text-slate-400 dark:text-slate-500">,</span></div>
+                                    {/* <div className="pl-6 text-emerald-600 dark:text-emerald-400">'PHP / Python'<span className="text-slate-400 dark:text-slate-500">,</span></div> */}
+                                    <div className="pl-6 text-emerald-600 dark:text-emerald-400">'Wordpress | XXF '</div>
                                     <div className="text-slate-800 dark:text-white">];</div>
                                     
                                     <div className="h-4"></div>
