@@ -189,7 +189,7 @@ const Hero: React.FC = () => {
                                         {/* Avatar Image - Extra Large */}
                                         <div className="relative w-72 h-50">
                                             <img 
-                                               src="/images/avatar.png" 
+                                               src="../Images/avatar.png" 
                                                 alt="Bui Xuan Viet"
                                                 className="w-full h-full object-cover object-center filter brightness-105 contrast-105 saturate-105 drop-shadow-2xl group-hover/avatar:scale-105 group-hover/avatar:brightness-110 group-hover/avatar:drop-shadow-3xl transition-all duration-700"
                                                 onError={(e) => {
