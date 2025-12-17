@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#334155;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#475569;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="avatar" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#bg)" rx="24"/>
+  
+  <!-- Avatar Circle -->
+  <circle cx="200" cy="160" r="60" fill="url(#avatar)" opacity="0.8"/>
+  
+  <!-- Avatar Icon -->
+  <path d="M200 120c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zm0 20c11.046 0 20 8.954 20 20s-8.954 20-20 20-20-8.954-20-20 8.954-20 20-20z" fill="white" opacity="0.9"/>
+  <path d="M200 220c-33.137 0-60 26.863-60 60v20h120v-20c0-33.137-26.863-60-60-60z" fill="white" opacity="0.9"/>
+  
+  <!-- Name -->
+  <text x="200" y="320" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">BUI XUAN VIET</text>
+  
+  <!-- Title -->
+  <text x="200" y="350" font-family="Arial, sans-serif" font-size="16" fill="#10b981" text-anchor="middle">Fullstack Developer</text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="80" cy="80" r="3" fill="#10b981" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="320" cy="100" r="2" fill="#06b6d4" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="350" cy="300" r="4" fill="#10b981" opacity="0.5">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+</svg>

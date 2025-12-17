@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
-import { ArrowRight, Github, Command, Database, Globe, Cpu } from 'lucide-react';
+import { ArrowRight, Github, Command } from 'lucide-react';
 import { PERSONAL_INFO } from '../constants';
 import RevealOnScroll from './RevealOnScroll';
+import MagneticButton from './MagneticButton';
 
 
 const Hero: React.FC = () => {
@@ -57,20 +58,53 @@ const Hero: React.FC = () => {
                 </RevealOnScroll>
 
                 <RevealOnScroll direction="bottom" delay={100}>
-                    <div className="relative mb-6">
-                        <h1 className="text-6xl sm:text-8xl lg:text-9xl font-black tracking-tighter text-slate-900 dark:text-white leading-[0.9] glitch-wrapper">
-                            <span className="block text-slate-500 dark:text-slate-500 text-2xl sm:text-4xl font-bold tracking-widest uppercase mb-4">Hello, I am</span>
-                            <span className="glitch-text block pb-2" data-text="BUI XUAN VIET">BUI XUAN VIET</span>
+                    <div className="relative mb-8">
+                        {/* Greeting */}
+                        <div className="mb-6">
+                            <span className="block text-slate-500 dark:text-slate-400 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-widest uppercase mb-6 animate-fade-in">Hello, I am</span>
+                        </div>
+                        
+                        {/* Name - Two Lines with Glitch Effect */}
+                        <h1 className="font-black tracking-tighter text-slate-900 dark:text-white leading-[0.8] glitch-wrapper relative">
+                            {/* Background Glow */}
+                            <div className="absolute -inset-6 bg-gradient-to-r from-emerald-500/10 via-cyan-500/10 to-blue-500/10 blur-3xl rounded-2xl"></div>
+                            
+                            <div className="relative">
+                                {/* First Line: BUI XUAN - Force single line */}
+                                <div className="glitch-text block text-5xl sm:text-7xl lg:text-8xl xl:text-9xl whitespace-nowrap" data-text="BUI XUAN">
+                                    BUI XUAN
+                                </div>
+                                
+                                {/* Second Line: VIET */}
+                                <div className="glitch-text block text-5xl sm:text-7xl lg:text-8xl xl:text-9xl -mt-2 lg:-mt-4" data-text="VIET">
+                                    VIET
+                                </div>
+                            </div>
+                            
+                            {/* Enhanced Decorative Elements */}
+                            <div className="absolute -top-6 -right-6 w-10 h-10 bg-gradient-to-br from-emerald-400/30 to-cyan-400/30 rounded-full animate-pulse"></div>
+                            <div className="absolute -bottom-6 -left-6 w-8 h-8 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-full animate-pulse delay-1000"></div>
+                            <div className="absolute top-1/2 -right-8 w-6 h-6 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full animate-pulse delay-500"></div>
                         </h1>
                     </div>
                 </RevealOnScroll>
 
                 <RevealOnScroll direction="bottom" delay={200}>
-                   <div className="mb-10 relative inline-block">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500 rounded-lg blur opacity-25"></div>
-                        <h2 className="relative text-3xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-slate-800 to-emerald-600 dark:from-emerald-400 dark:via-white dark:to-emerald-400 animate-shimmer bg-[length:200%_100%]">
-                            FULLSTACK DEVELOPER
-                        </h2>
+                   <div className="mb-12 relative">
+                        {/* Enhanced Title */}
+                        <div className="relative inline-block">
+                            <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 via-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl"></div>
+                            <h2 className="relative text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-cyan-500 to-blue-600 dark:from-emerald-400 dark:via-cyan-400 dark:to-blue-400 animate-gradient bg-[length:200%_100%] px-4 py-2">
+                                FULLSTACK DEVELOPER
+                            </h2>
+                        </div>
+                        
+                        {/* Subtitle */}
+                        <div className="mt-6 flex items-center justify-center lg:justify-start gap-4">
+                            <div className="h-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent flex-1 max-w-20"></div>
+                            <span className="text-slate-500 dark:text-slate-400 text-sm font-semibold tracking-wider uppercase">Passionate • Innovative • Reliable</span>
+                            <div className="h-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent flex-1 max-w-20"></div>
+                        </div>
                    </div>
                 </RevealOnScroll>
 
@@ -82,136 +116,290 @@ const Hero: React.FC = () => {
 
                 <RevealOnScroll direction="bottom" delay={400}>
                     <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
-                        {/* Primary Button - Premium Style */}
-                        <a 
-                            href="#projects" 
-                            className="group relative w-full sm:w-auto px-8 py-4 rounded-xl font-bold tracking-wide text-white overflow-hidden transition-all duration-300"
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 shadow-[0_0_30px_rgba(16,185,129,0.4)]"></div>
-                            <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:250%_250%] animate-shimmer"></div>
-                            <span className="relative z-10 flex items-center justify-center gap-3 text-lg">
-                                View Featured Works
-                                <ArrowRight className="w-5 h-5" />
-                            </span>
-                        </a>
+                        {/* Primary Button - Premium Style with Magnetic Effect */}
+                        <MagneticButton intensity={0.2}>
+                            <a 
+                                href="#projects" 
+                                className="group relative w-full sm:w-auto px-8 py-4 rounded-xl font-bold tracking-wide text-white overflow-hidden transition-all duration-300 ripple-button block"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 shadow-[0_0_30px_rgba(16,185,129,0.4)] group-hover:shadow-[0_0_40px_rgba(16,185,129,0.6)] transition-all duration-300"></div>
+                                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:250%_250%] animate-shimmer"></div>
+                                <span className="relative z-10 flex items-center justify-center gap-3 text-lg">
+                                    View Featured Works
+                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                                </span>
+                            </a>
+                        </MagneticButton>
 
-                        {/* Secondary Button - Glass Style */}
-                        <a 
-                            href={PERSONAL_INFO.github} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="group relative w-full sm:w-auto px-8 py-4 rounded-xl bg-white/50 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold tracking-wide hover:text-emerald-700 dark:hover:text-white hover:border-emerald-500/50 hover:bg-white/80 dark:hover:bg-slate-800/60 transition-all duration-300 active:scale-[0.98] shadow-lg"
-                        >
-                            <span className="relative z-10 flex items-center justify-center gap-3 text-lg">
-                                <Github className="w-5 h-5" />
-                                GitHub Profile
-                            </span>
-                        </a>
+                        {/* Secondary Button - Glass Style with Magnetic Effect */}
+                        <MagneticButton intensity={0.15}>
+                            <a 
+                                href={PERSONAL_INFO.github} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="group relative w-full sm:w-auto px-8 py-4 rounded-xl bg-white/50 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold tracking-wide hover:text-emerald-700 dark:hover:text-white hover:border-emerald-500/50 hover:bg-white/80 dark:hover:bg-slate-800/60 transition-all duration-300 shadow-lg hover:shadow-glow-emerald ripple-button block"
+                            >
+                                <span className="relative z-10 flex items-center justify-center gap-3 text-lg">
+                                    <Github className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+                                    GitHub Profile
+                                </span>
+                            </a>
+                        </MagneticButton>
                     </div>
                 </RevealOnScroll>
             </div>
 
-            {/* Right: Abstract Tech Visual - Expanded Code Block */}
+            {/* Right: Premium IDE-Style Profile Card */}
             <div className="flex-1 w-full relative hidden lg:block perspective-1000">
                  <RevealOnScroll direction="right" delay={200}>
-                    <div className="relative w-full max-w-xl mx-auto">
+                    <div className="relative w-full max-w-4xl mx-auto">
                         
-                        {/* 1. Main Glass Card - Code Editor (Longer) */}
-                        <div className="relative bg-white/90 dark:bg-[#0f172a]/90 backdrop-blur-xl border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl z-20 flex flex-col overflow-hidden h-[600px]">
-                            {/* Header */}
-                            <div className="h-10 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-[#020617]/50 flex items-center px-4 justify-between">
-                                <div className="flex gap-1.5">
-                                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-                                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
-                                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
+                        {/* Main IDE-Style Card */}
+                        <div className="relative bg-white/95 dark:bg-[#0d1117]/95 backdrop-blur-xl border border-slate-200/60 dark:border-slate-700/60 rounded-2xl shadow-2xl z-20 overflow-hidden group hover:shadow-3xl transition-all duration-700 min-h-[700px]">
+                            
+                            {/* Enhanced Gradient Border */}
+                            <div className="absolute -inset-0.5 bg-gradient-to-br from-emerald-400/30 via-cyan-400/30 to-blue-400/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-sm"></div>
+                            
+                            {/* IDE Header */}
+                            <div className="relative z-10 h-14 border-b border-slate-200/60 dark:border-slate-700/60 bg-slate-50/80 dark:bg-[#161b22]/80 flex items-center px-6 justify-between backdrop-blur-sm">
+                                <div className="flex gap-3">
+                                    <div className="w-4 h-4 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors cursor-pointer"></div>
+                                    <div className="w-4 h-4 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition-colors cursor-pointer"></div>
+                                    <div className="w-4 h-4 rounded-full bg-emerald-500/80 hover:bg-emerald-500 transition-colors cursor-pointer"></div>
                                 </div>
-                                <div className="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-2">
-                                    <Command className="w-3 h-3" /> BUI XUAN VIET - FULL STACK DEVELOPER
+                                <div className="text-sm font-mono text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                                    <Command className="w-4 h-4" />
+                                    <span>developer.profile.tsx</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></div>
+                                    <span className="text-sm text-emerald-600 dark:text-emerald-400 font-semibold">Online</span>
                                 </div>
                             </div>
                             
-                            {/* Body - Expanded Code */}
-                            <div className="flex-1 p-6 font-mono text-sm leading-relaxed overflow-hidden relative">
-                                <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100%_24px] pointer-events-none"></div>
-                                <div className="relative z-10 space-y-1">
-                                   
-                                    <div className="flex gap-2">
-                                        <span className="text-purple-600 dark:text-purple-400">import</span> 
-                                        <span className="text-slate-800 dark:text-white">{'{'}</span>
-                                    </div>
-                                    <div className="pl-6">
-                                        <span className="text-yellow-600 dark:text-yellow-300">Scalability</span>
-                                        <span className="text-slate-400 dark:text-slate-500">,</span>
-                                    </div>
-                                    <div className="pl-6">
-                                        <span className="text-yellow-600 dark:text-yellow-300">Security</span>
-                                    </div>
-                                    <div className="flex gap-2">
-                                        <span className="text-slate-800 dark:text-white">{'}'}</span>
-                                        <span className="text-purple-600 dark:text-purple-400">from</span>
-                                        <span className="text-emerald-600 dark:text-emerald-400">'@XuanViet/Developer'</span>;
-                                    </div>
-                                    
-                                    <div className="h-4"></div>
-                                    {/* <div className="text-slate-400 dark:text-slate-500">// Defining the core stack</div> */}
-                                    
-                                    <div>
-                                        <span className="text-blue-600 dark:text-blue-400">const</span> <span className="text-yellow-600 dark:text-yellow-300">TechStack</span> <span className="text-slate-800 dark:text-white">=</span> <span className="text-slate-800 dark:text-white">[</span>
-                                    </div>
-                                    <div className="pl-6 text-emerald-600 dark:text-emerald-400">'Java Spring Boot | .NET Core '<span className="text-slate-400 dark:text-slate-500">,</span></div>
-                                    <div className="pl-6 text-emerald-600 dark:text-emerald-400">'Python | PHP'<span className="text-slate-400 dark:text-slate-500">,</span></div>
-                                    <div className="pl-6 text-emerald-600 dark:text-emerald-400">'React | Next.js | ReactNative'<span className="text-slate-400 dark:text-slate-500">,</span></div>
-                                    {/* <div className="pl-6 text-emerald-600 dark:text-emerald-400">'PHP / Python'<span className="text-slate-400 dark:text-slate-500">,</span></div> */}
-                                    <div className="pl-6 text-emerald-600 dark:text-emerald-400">'Wordpress | XXF '</div>
-                                    <div className="text-slate-800 dark:text-white">];</div>
-                                    
-                                    <div className="h-4"></div>
-
-                                    <div>
-                                        <span className="text-purple-600 dark:text-purple-400">export default</span> <span className="text-blue-600 dark:text-blue-400">class</span> <span className="text-yellow-600 dark:text-yellow-300">Viet</span> <span className="text-slate-800 dark:text-white">{'{'}</span>
+                            {/* IDE Body */}
+                            <div className="relative z-10 flex min-h-[600px]">
+                                {/* Left Sidebar - Avatar & Info */}
+                                <div className="w-2/5 bg-slate-50/50 dark:bg-[#0d1117]/50 border-r border-slate-200/60 dark:border-slate-700/60 p-8 flex flex-col items-center justify-center relative overflow-hidden">
+                                    {/* Clean Avatar - No Borders */}
+                                    <div className="relative mb-6 group/avatar">
+                                        {/* Subtle Glow Effect */}
+                                        <div className="absolute -inset-6 bg-gradient-to-br from-emerald-400/10 via-cyan-400/10 to-blue-400/10 blur-3xl opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-1000"></div>
+                                        
+                                        {/* Avatar Image - Extra Large */}
+                                        <div className="relative w-72 h-50">
+                                            <img 
+                                                src="/Images/avatar.png" 
+                                                alt="Bui Xuan Viet"
+                                                className="w-full h-full object-cover object-center filter brightness-105 contrast-105 saturate-105 drop-shadow-2xl group-hover/avatar:scale-105 group-hover/avatar:brightness-110 group-hover/avatar:drop-shadow-3xl transition-all duration-700"
+                                                onError={(e) => {
+                                                    (e.target as HTMLImageElement).src = "/Images/profile-placeholder.svg";
+                                                }}
+                                            />
+                                            
+                                            {/* Bottom Fade Shadow - Hides cut edges */}
+                                            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-slate-50/90 via-slate-50/60 to-transparent dark:from-[#0d1117]/90 dark:via-[#0d1117]/60 dark:to-transparent pointer-events-none"></div>
+                                        </div>
+                                        
+                                        {/* Minimal Status Indicator
+                                        <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center shadow-lg group-hover/avatar:scale-110 transition-transform duration-300">
+                                            <div className="w-2.5 h-2.5 bg-white rounded-full animate-pulse"></div>
+                                        </div> */}
                                     </div>
                                     
-                                    <div className="pl-6">
-                                        <span className="text-blue-600 dark:text-blue-400">constructor</span>() {'{'}
-                                    </div>
-                                    <div className="pl-12">
-                                        <span className="text-blue-600 dark:text-blue-400">this</span>.<span className="text-slate-800 dark:text-white">passion</span> <span className="text-slate-800 dark:text-white">=</span> <span className="text-emerald-600 dark:text-emerald-400">'Clean Code'</span>;
-                                    </div>
-                                     <div className="pl-12">
-                                        <span className="text-blue-600 dark:text-blue-400">this</span>.<span className="text-slate-800 dark:text-white">goal</span> <span className="text-slate-800 dark:text-white">=</span> <span className="text-emerald-600 dark:text-emerald-400">'Excellence'</span>;
-                                    </div>
-                                    <div className="pl-6 text-slate-800 dark:text-white">{'}'}</div>
-
-                                     <div className="pl-6 mt-2">
-                                        <span className="text-blue-600 dark:text-blue-400">async</span> <span className="text-yellow-600 dark:text-yellow-300">buildSystem</span>() {'{'}
-                                    </div>
-                                    <div className="pl-12 text-slate-400 dark:text-slate-500">// Deploying scalable solutions</div>
-                                    <div className="pl-12 text-purple-600 dark:text-purple-400">await <span className="text-yellow-600 dark:text-yellow-300">Scalability</span>.<span className="text-blue-600 dark:text-blue-400">maximize</span>();</div>
-                                    <div className="pl-6 text-slate-800 dark:text-white">{'}'}</div>
+                                    {/* Name & Title */}
+                                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white text-center mb-2">
+                                        Bui Xuan Viet
+                                    </h3>
+                                    <p className="text-lg text-emerald-600 dark:text-emerald-400 font-semibold">
+                                        Fullstack Developer
+                                    </p>
                                     
-                                    <div className="text-slate-800 dark:text-white">{'}'}</div>
+                                    {/* Bottom Fade Overlay for entire sidebar */}
+                                    <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-50/95 via-slate-50/70 to-transparent dark:from-[#0d1117]/95 dark:via-[#0d1117]/70 dark:to-transparent pointer-events-none"></div>
+                                </div>
+                                
+                                {/* Right Code Area */}
+                                <div className="flex-1 p-8 font-mono text-base leading-relaxed bg-white/50 dark:bg-[#0d1117]/50">
+                                    <div className="space-y-1">
+                                        {/* Line Numbers */}
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">1</span>
+                                            <div className="flex gap-2">
+                                                <span className="text-purple-600 dark:text-purple-400">const</span>
+                                                <span className="text-blue-600 dark:text-blue-400">developer</span>
+                                                <span className="text-slate-800 dark:text-white">=</span>
+                                                <span className="text-slate-800 dark:text-white">{'{'}</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">2</span>
+                                            <div className="pl-4">
+                                                <span className="text-red-600 dark:text-red-400">name</span>
+                                                <span className="text-slate-800 dark:text-white">:</span>
+                                                <span className="text-emerald-600 dark:text-emerald-400"> "Bui Xuan Viet"</span>
+                                                <span className="text-slate-400 dark:text-slate-500">,</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">3</span>
+                                            <div className="pl-6">
+                                                <span className="text-red-600 dark:text-red-400">role</span>
+                                                <span className="text-slate-800 dark:text-white">:</span>
+                                                <span className="text-emerald-600 dark:text-emerald-400"> "Fullstack Developer"</span>
+                                                <span className="text-slate-400 dark:text-slate-500">,</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">4</span>
+                                            <div className="pl-6">
+                                                <span className="text-red-600 dark:text-red-400">skills</span>
+                                                <span className="text-slate-800 dark:text-white">: [</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">5</span>
+                                            <div className="pl-12">
+                                                <span className="text-emerald-600 dark:text-emerald-400">"Java Spring Boot"</span>
+                                                <span className="text-slate-400 dark:text-slate-500">,</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">6</span>
+                                            <div className="pl-12">
+                                                <span className="text-emerald-600 dark:text-emerald-400">"C# .NET Core"</span>
+                                                <span className="text-slate-400 dark:text-slate-500">,</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">7</span>
+                                            <div className="pl-12">
+                                                <span className="text-emerald-600 dark:text-emerald-400">"PHP & Laravel"</span>
+                                                <span className="text-slate-400 dark:text-slate-500">,</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">8</span>
+                                            <div className="pl-12">
+                                                <span className="text-emerald-600 dark:text-emerald-400">"WordPress & CMS"</span>
+                                                <span className="text-slate-400 dark:text-slate-500">,</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">9</span>
+                                            <div className="pl-12">
+                                                <span className="text-emerald-600 dark:text-emerald-400">"React & Next.js"</span>
+                                                <span className="text-slate-400 dark:text-slate-500">,</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">10</span>
+                                            <div className="pl-12">
+                                                <span className="text-emerald-600 dark:text-emerald-400">"React Native"</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">11</span>
+                                            <div className="pl-6">
+                                                <span className="text-slate-800 dark:text-white">],</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">12</span>
+                                            <div className="pl-6">
+                                                <span className="text-red-600 dark:text-red-400">passion</span>
+                                                <span className="text-slate-800 dark:text-white">:</span>
+                                                <span className="text-emerald-600 dark:text-emerald-400"> "Clean Code & Innovation"</span>
+                                                <span className="text-slate-400 dark:text-slate-500">,</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">13</span>
+                                            <div className="pl-6">
+                                                <span className="text-red-600 dark:text-red-400">status</span>
+                                                <span className="text-slate-800 dark:text-white">:</span>
+                                                <span className="text-emerald-600 dark:text-emerald-400"> "Available for hire"</span>
+                                                <span className="text-slate-400 dark:text-slate-500">,</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">14</span>
+                                            <div className="pl-6">
+                                                <span className="text-red-600 dark:text-red-400">experience</span>
+                                                <span className="text-slate-800 dark:text-white">:</span>
+                                                <span className="text-emerald-600 dark:text-emerald-400"> "2+ years"</span>
+                                                <span className="text-slate-400 dark:text-slate-500">,</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">15</span>
+                                            <div className="pl-6">
+                                                <span className="text-red-600 dark:text-red-400">location</span>
+                                                <span className="text-slate-800 dark:text-white">:</span>
+                                                <span className="text-emerald-600 dark:text-emerald-400"> "Ho Chi Minh City, VN"</span>
+                                                <span className="text-slate-400 dark:text-slate-500">,</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">16</span>
+                                            <div className="pl-6">
+                                                <span className="text-red-600 dark:text-red-400">contact</span>
+                                                <span className="text-slate-800 dark:text-white">:</span>
+                                                <span className="text-emerald-600 dark:text-emerald-400"> "vietbx23@gmail.com"</span>
+                                                <span className="text-slate-400 dark:text-slate-500">,</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">17</span>
+                                            <div className="pl-6">
+                                                <span className="text-red-600 dark:text-red-400">github</span>
+                                                <span className="text-slate-800 dark:text-white">:</span>
+                                                <span className="text-emerald-600 dark:text-emerald-400"> "github.com/VietBx23"</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex gap-6">
+                                            <span className="text-slate-400 dark:text-slate-500 text-sm w-8">18</span>
+                                            <div>
+                                                <span className="text-slate-800 dark:text-white">{'}'}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            {/* IDE Footer */}
+                            <div className="relative z-10 h-10 border-t border-slate-200/60 dark:border-slate-700/60 bg-slate-50/80 dark:bg-[#161b22]/80 flex items-center px-6 justify-between text-sm backdrop-blur-sm">
+                                <div className="flex items-center gap-6">
+                                    <span className="text-slate-500 dark:text-slate-400">TypeScript React</span>
+                                    <span className="text-emerald-600 dark:text-emerald-400">✓ No Problems</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <span className="text-slate-500 dark:text-slate-400">Ln 18, Col 1</span>
+                                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* 2. Floating Elements Behind - Adjusted for light mode */}
-                        <div className="absolute -top-8 -right-12 w-48 h-48 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-3xl flex flex-col items-center justify-center gap-3 shadow-xl animate-float z-10">
-                            <Database className="w-12 h-12 text-emerald-500 dark:text-emerald-400" />
-                            <span className="text-sm font-bold text-slate-800 dark:text-white uppercase tracking-wider">Backend</span>
-                        </div>
+                        
 
-                        <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-3xl flex flex-col items-center justify-center gap-3 shadow-xl animate-float z-30" style={{animationDelay: '1.5s'}}>
-                            <Globe className="w-10 h-10 text-blue-500 dark:text-blue-400" />
-                            <span className="text-sm font-bold text-slate-800 dark:text-white uppercase tracking-wider">WEB</span>
-                        </div>
-
-                        <div className="absolute top-1/2 -right-20 w-44 h-24 bg-emerald-500/90 backdrop-blur-md rounded-2xl flex items-center justify-center gap-4 shadow-[0_0_30px_rgba(16,185,129,0.3)] animate-float z-40" style={{animationDelay: '0.5s'}}>
-                            <Cpu className="w-10 h-10 text-white dark:text-slate-900" />
-                            <div className="flex flex-col">
-                                <span className="text-sm font-black text-white dark:text-slate-900 uppercase">FULLSTACK</span>
-                                <span className="text-xs font-bold text-white/90 dark:text-slate-800">DEVELOPER</span>
-                            </div>
-                        </div>
+                       
 
                     </div>
                  </RevealOnScroll>

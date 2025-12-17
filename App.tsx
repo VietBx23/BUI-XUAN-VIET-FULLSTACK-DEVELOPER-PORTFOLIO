@@ -10,6 +10,7 @@ import Education from './components/Education';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
 import AdminDashboard from './admin/AdminDashboard';
+import EnhancedEffects from './components/EnhancedEffects';
 
 
 
@@ -30,7 +31,7 @@ const CompleteAdminDashboard = () => {
   });
 
   // Summary State
-  const [summary, setSummary] = React.useState("I'm Bui Xuan Viet, a Fullstack Developer experienced in building scalable backend systems, modern frontend applications, and mobile solutions.");
+  const [summary, setSummary] = React.useState("I’m Bui Xuan Viet, a system-driven full-stack developer specializing in backend architecture, CMS platforms, and SEO-focused web systems. I work across C# (.NET), Node.js, Java, PHP, and Python, build performant frontends with React and Next.js, deploy and manage VPS infrastructure using BaoTa, and create internal CMS and SEO automation tools for large-scale content websites.");
 
   // Experience State
   const [experiences, setExperiences] = React.useState([
@@ -227,6 +228,9 @@ const Portfolio: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-slate-200 font-sans selection:bg-emerald-500/30 selection:text-emerald-800 dark:selection:text-emerald-200 relative overflow-x-hidden transition-colors duration-300">
       
+      {/* Enhanced Effects Layer */}
+      <EnhancedEffects />
+      
       {/* Global Background Ambience (Fixed) */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
          {/* 1. Stars - ONLY Visible in Dark Mode */}
@@ -244,8 +248,8 @@ const Portfolio: React.FC = () => {
           ))}
 
          {/* 3. Glow Orbs - Adjusted for Light/Dark */}
-         <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-[120px] opacity-40"></div>
-         <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[100px] opacity-30"></div>
+         <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-[120px] opacity-40 parallax" data-speed="0.2"></div>
+         <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[100px] opacity-30 parallax" data-speed="0.3"></div>
          
          {/* 4. Grid - Darker lines in light mode, Light lines in dark mode */}
          <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
