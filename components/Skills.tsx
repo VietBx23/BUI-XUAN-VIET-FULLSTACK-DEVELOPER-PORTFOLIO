@@ -21,205 +21,175 @@ const Skills: React.FC = () => {
           </div>
         </RevealOnScroll>
 
-        {/* Skills Grid - Simple Gradient Border */}
+        {/* Skills Grid - Simple Border Effect Only */}
         <RevealOnScroll direction="bottom" delay={200}>
           <div className="mb-20">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               
               {/* Programming Languages */}
-              <div className="group relative bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-transparent rounded-2xl p-8 shadow-lg transition-all duration-500 overflow-hidden">
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500 p-0.5">
-                  <div className="w-full h-full bg-white dark:bg-slate-900/60 rounded-2xl"></div>
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-all duration-300">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
+                    💻
+                  </div>
+                  <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-cyan-700 dark:from-emerald-300 dark:to-cyan-300">
+                    Programming Languages
+                  </h3>
                 </div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
-                      💻
+                <div className="space-y-3">
+                  {[
+                    { name: 'Java', icon: '☕' },
+                    { name: 'C#', icon: '🔷' },
+                    { name: 'PHP', icon: '🐘' },
+                    { name: 'Python', icon: '🐍' },
+                    { name: 'JavaScript', icon: '🟨' },
+                    { name: 'TypeScript', icon: '🔵' },
+                    { name: 'C', icon: '⚡' }
+                  ].map((skill) => (
+                    <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                      <span className="text-lg">{skill.icon}</span>
+                      <span className="font-medium">{skill.name}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                      Programming Languages
-                    </h3>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { name: 'Java', icon: '☕' },
-                      { name: 'C#', icon: '🔷' },
-                      { name: 'PHP', icon: '🐘' },
-                      { name: 'Python', icon: '🐍' },
-                      { name: 'JavaScript', icon: '🟨' },
-                      { name: 'TypeScript', icon: '🔵' },
-                      { name: 'C', icon: '⚡' }
-                    ].map((skill) => (
-                      <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                        <span className="text-lg">{skill.icon}</span>
-                        <span className="font-medium">{skill.name}</span>
-                      </div>
-                    ))}
-                  </div>
+                  ))}
                 </div>
               </div>
 
               {/* Backend Frameworks */}
-              <div className="group relative bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-transparent rounded-2xl p-8 shadow-lg transition-all duration-500 overflow-hidden">
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500 p-0.5">
-                  <div className="w-full h-full bg-white dark:bg-slate-900/60 rounded-2xl"></div>
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-all duration-300">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
+                    ⚙️
+                  </div>
+                  <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-cyan-700 dark:from-emerald-300 dark:to-cyan-300">
+                    Backend Frameworks
+                  </h3>
                 </div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
-                      ⚙️
+                <div className="space-y-3">
+                  {[
+                    { name: 'Spring Boot', icon: '🍃' },
+                    { name: '.NET Core', icon: '🔷' },
+                    { name: 'ASP.NET', icon: '🌐' },
+                    { name: 'Node.js', icon: '🟢' },
+                    { name: 'Express', icon: '⚡' },
+                    { name: 'Hibernate', icon: '💾' },
+                    { name: 'RESTful APIs', icon: '🔗' },
+                    { name: 'WebSocket', icon: '🔌' },
+                    { name: 'SignalR', icon: '📡' },
+                    { name: 'Spring Security', icon: '🔒' }
+                  ].map((skill) => (
+                    <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                      <span className="text-lg">{skill.icon}</span>
+                      <span className="font-medium">{skill.name}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                      Backend Frameworks
-                    </h3>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { name: 'Spring Boot', icon: '🍃' },
-                      { name: '.NET Core', icon: '🔷' },
-                      { name: 'ASP.NET', icon: '🌐' },
-                      { name: 'Node.js', icon: '🟢' },
-                      { name: 'Express', icon: '⚡' },
-                      { name: 'Hibernate', icon: '💾' },
-                      { name: 'RESTful APIs', icon: '🔗' },
-                      { name: 'WebSocket', icon: '🔌' },
-                      { name: 'SignalR', icon: '📡' },
-                      { name: 'Spring Security', icon: '🔒' }
-                    ].map((skill) => (
-                      <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                        <span className="text-lg">{skill.icon}</span>
-                        <span className="font-medium">{skill.name}</span>
-                      </div>
-                    ))}
-                  </div>
+                  ))}
                 </div>
               </div>
 
               {/* Frontend & Mobile */}
-              <div className="group relative bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-transparent rounded-2xl p-8 shadow-lg transition-all duration-500 overflow-hidden">
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500 p-0.5">
-                  <div className="w-full h-full bg-white dark:bg-slate-900/60 rounded-2xl"></div>
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-all duration-300">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
+                    📱
+                  </div>
+                  <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-cyan-700 dark:from-emerald-300 dark:to-cyan-300">
+                    Frontend & Mobile
+                  </h3>
                 </div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
-                      📱
+                <div className="space-y-3">
+                  {[
+                    { name: 'ReactJS', icon: '⚛️' },
+                    { name: 'React Native', icon: '📱' },
+                    { name: 'AngularJS', icon: '🅰️' },
+                    { name: 'Bootstrap', icon: '🎨' },
+                    { name: 'Thymeleaf', icon: '🌿' },
+                    { name: 'JSP/Servlet', icon: '☕' },
+                    { name: 'XXF Themes', icon: '🎭' }
+                  ].map((skill) => (
+                    <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                      <span className="text-lg">{skill.icon}</span>
+                      <span className="font-medium">{skill.name}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                      Frontend & Mobile
-                    </h3>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { name: 'ReactJS', icon: '⚛️' },
-                      { name: 'React Native', icon: '📱' },
-                      { name: 'AngularJS', icon: '🅰️' },
-                      { name: 'Bootstrap', icon: '🎨' },
-                      { name: 'Thymeleaf', icon: '🌿' },
-                      { name: 'JSP/Servlet', icon: '☕' },
-                      { name: 'XXF Themes', icon: '🎭' }
-                    ].map((skill) => (
-                      <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                        <span className="text-lg">{skill.icon}</span>
-                        <span className="font-medium">{skill.name}</span>
-                      </div>
-                    ))}
-                  </div>
+                  ))}
                 </div>
               </div>
 
               {/* Databases */}
-              <div className="group relative bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-transparent rounded-2xl p-8 shadow-lg transition-all duration-500 overflow-hidden">
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500 p-0.5">
-                  <div className="w-full h-full bg-white dark:bg-slate-900/60 rounded-2xl"></div>
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-all duration-300">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
+                    🗄️
+                  </div>
+                  <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-cyan-700 dark:from-emerald-300 dark:to-cyan-300">
+                    Databases
+                  </h3>
                 </div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
-                      🗄️
+                <div className="space-y-3">
+                  {[
+                    { name: 'SQL Server', icon: '🗄️' },
+                    { name: 'MySQL', icon: '🐬' },
+                    { name: 'Firebase', icon: '🔥' }
+                  ].map((skill) => (
+                    <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                      <span className="text-lg">{skill.icon}</span>
+                      <span className="font-medium">{skill.name}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                      Databases
-                    </h3>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { name: 'SQL Server', icon: '🗄️' },
-                      { name: 'MySQL', icon: '🐬' },
-                      { name: 'Firebase', icon: '🔥' }
-                    ].map((skill) => (
-                      <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                        <span className="text-lg">{skill.icon}</span>
-                        <span className="font-medium">{skill.name}</span>
-                      </div>
-                    ))}
-                  </div>
+                  ))}
                 </div>
               </div>
 
               {/* Testing & Tools */}
-              <div className="group relative bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-transparent rounded-2xl p-8 shadow-lg transition-all duration-500 overflow-hidden">
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500 p-0.5">
-                  <div className="w-full h-full bg-white dark:bg-slate-900/60 rounded-2xl"></div>
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-all duration-300">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
+                    🔧
+                  </div>
+                  <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-cyan-700 dark:from-emerald-300 dark:to-cyan-300">
+                    Testing & Tools
+                  </h3>
                 </div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
-                      🔧
+                <div className="space-y-3">
+                  {[
+                    { name: 'JUnit', icon: '🧪' },
+                    { name: 'TestNG', icon: '✅' },
+                    { name: 'Selenium', icon: '🤖' },
+                    { name: 'Postman', icon: '📮' },
+                    { name: 'Swagger', icon: '📋' },
+                    { name: 'SEO Tools', icon: '🔍' }
+                  ].map((skill) => (
+                    <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                      <span className="text-lg">{skill.icon}</span>
+                      <span className="font-medium">{skill.name}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                      Testing & Tools
-                    </h3>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { name: 'JUnit', icon: '🧪' },
-                      { name: 'TestNG', icon: '✅' },
-                      { name: 'Selenium', icon: '🤖' },
-                      { name: 'Postman', icon: '📮' },
-                      { name: 'Swagger', icon: '📋' },
-                      { name: 'SEO Tools', icon: '🔍' }
-                    ].map((skill) => (
-                      <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                        <span className="text-lg">{skill.icon}</span>
-                        <span className="font-medium">{skill.name}</span>
-                      </div>
-                    ))}
-                  </div>
+                  ))}
                 </div>
               </div>
 
               {/* DevOps & CMS */}
-              <div className="group relative bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-transparent rounded-2xl p-8 shadow-lg transition-all duration-500 overflow-hidden">
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500 p-0.5">
-                  <div className="w-full h-full bg-white dark:bg-slate-900/60 rounded-2xl"></div>
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-all duration-300">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
+                    🚀
+                  </div>
+                  <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-cyan-700 dark:from-emerald-300 dark:to-cyan-300">
+                    DevOps & CMS
+                  </h3>
                 </div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
-                      🚀
+                <div className="space-y-3">
+                  {[
+                    { name: 'WordPress', icon: '📝' },
+                    { name: 'Baota Server', icon: '🖥️' },
+                    { name: 'VPS', icon: '☁️' },
+                    { name: 'SEO Optimization', icon: '📈' },
+                    { name: 'GitHub', icon: '🐙' },
+                    { name: 'Agile', icon: '🔄' },
+                    { name: 'Scrum', icon: '🏃' },
+                    { name: 'CMS Development', icon: '🏗️' }
+                  ].map((skill) => (
+                    <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                      <span className="text-lg">{skill.icon}</span>
+                      <span className="font-medium">{skill.name}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                      DevOps & CMS
-                    </h3>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { name: 'WordPress', icon: '📝' },
-                      { name: 'Baota Server', icon: '🖥️' },
-                      { name: 'VPS', icon: '☁️' },
-                      { name: 'SEO Optimization', icon: '📈' },
-                      { name: 'GitHub', icon: '🐙' },
-                      { name: 'Agile', icon: '🔄' },
-                      { name: 'Scrum', icon: '🏃' },
-                      { name: 'CMS Development', icon: '🏗️' }
-                    ].map((skill) => (
-                      <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                        <span className="text-lg">{skill.icon}</span>
-                        <span className="font-medium">{skill.name}</span>
-                      </div>
-                    ))}
-                  </div>
+                  ))}
                 </div>
               </div>
 
@@ -227,51 +197,7 @@ const Skills: React.FC = () => {
           </div>
         </RevealOnScroll>
 
-        {/* Stats Section */}
-        <RevealOnScroll delay={400} direction="bottom">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            
-            <div className="group relative bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-transparent rounded-2xl p-8 shadow-lg transition-all duration-500 overflow-hidden">
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500 p-0.5">
-                <div className="w-full h-full bg-white dark:bg-slate-900/60 rounded-2xl"></div>
-              </div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-black text-emerald-600 dark:text-emerald-400">15+</span>
-                </div>
-                <div className="text-xl font-bold text-slate-900 dark:text-white mb-2">Technologies</div>
-                <div className="text-slate-600 dark:text-slate-400">Mastered & Growing</div>
-              </div>
-            </div>
 
-            <div className="group relative bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-transparent rounded-2xl p-8 shadow-lg transition-all duration-500 overflow-hidden">
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500 p-0.5">
-                <div className="w-full h-full bg-white dark:bg-slate-900/60 rounded-2xl"></div>
-              </div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-black text-emerald-600 dark:text-emerald-400">5+</span>
-                </div>
-                <div className="text-xl font-bold text-slate-900 dark:text-white mb-2">Frameworks</div>
-                <div className="text-slate-600 dark:text-slate-400">Full-Stack Expertise</div>
-              </div>
-            </div>
-
-            <div className="group relative bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-transparent rounded-2xl p-8 shadow-lg transition-all duration-500 overflow-hidden">
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500 p-0.5">
-                <div className="w-full h-full bg-white dark:bg-slate-900/60 rounded-2xl"></div>
-              </div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-black text-emerald-600 dark:text-emerald-400">2+</span>
-                </div>
-                <div className="text-xl font-bold text-slate-900 dark:text-white mb-2">Years</div>
-                <div className="text-slate-600 dark:text-slate-400">Professional Experience</div>
-              </div>
-            </div>
-
-          </div>
-        </RevealOnScroll>
         
       </div>
     </section>

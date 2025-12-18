@@ -110,7 +110,7 @@ const Hero: React.FC = () => {
 
                 <RevealOnScroll direction="bottom" delay={300}>
                     <p className="text-xl sm:text-2xl text-slate-600 dark:text-slate-400 mb-12 max-w-4xl mx-auto lg:mx-0 leading-relaxed font-light">
-                        I’m Bui Xuan Viet, a developer passionate about building reliable backend systems and interactive applications. I specialize in <span className="text-slate-900 dark:text-white font-semibold">.NET Core</span>, <span className="text-slate-900 dark:text-white font-semibold">Java Spring</span>, and <span className="text-slate-900 dark:text-white font-semibold">Fullstack</span> web development.
+                        I’m Bui Xuan Viet, a Fullstack Developer with 1+ year of experience across backend and frontend. using <span className="text-slate-900 dark:text-white font-semibold">C#</span>, <span className="text-slate-900 dark:text-white font-semibold">Java</span>, <span className="text-slate-900 dark:text-white font-semibold">Node.js</span>, <span className="text-slate-900 dark:text-white font-semibold">React</span>, <span className="text-slate-900 dark:text-white font-semibold">Next.js</span>, and more.
                     </p>
                 </RevealOnScroll>
 
