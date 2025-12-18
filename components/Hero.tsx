@@ -186,19 +186,24 @@ const Hero: React.FC = () => {
                                         {/* Subtle Glow Effect */}
                                         <div className="absolute -inset-6 bg-gradient-to-br from-emerald-400/10 via-cyan-400/10 to-blue-400/10 blur-3xl opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-1000"></div>
                                         
-                                        {/* Avatar Image - Extra Large */}
+                                        {/* Avatar Image - Extra Large with Enhanced Shadow */}
                                         <div className="relative w-72 h-50">
+                                            {/* Enhanced Bottom Shadow - Multiple layers for depth */}
+                                            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-64 h-16 bg-slate-900/20 dark:bg-black/40 rounded-full blur-2xl opacity-60 group-hover/avatar:opacity-80 transition-all duration-700"></div>
+                                            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-56 h-12 bg-slate-700/15 dark:bg-black/30 rounded-full blur-xl opacity-40 group-hover/avatar:opacity-60 transition-all duration-700"></div>
+                                            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-48 h-8 bg-slate-600/10 dark:bg-black/20 rounded-full blur-lg opacity-30 group-hover/avatar:opacity-50 transition-all duration-700"></div>
+                                            
                                             <img 
                                                src="/Images/avatar.png" 
                                                 alt="Bui Xuan Viet"
-                                                className="w-full h-full object-cover object-center filter brightness-105 contrast-105 saturate-105 drop-shadow-2xl group-hover/avatar:scale-105 group-hover/avatar:brightness-110 group-hover/avatar:drop-shadow-3xl transition-all duration-700"
+                                                className="relative z-10 w-full h-full object-cover object-center filter brightness-105 contrast-105 saturate-105 drop-shadow-2xl group-hover/avatar:brightness-110 group-hover/avatar:drop-shadow-3xl transition-all duration-700"
                                                 onError={(e) => {
                                                     (e.target as HTMLImageElement).src = "/Images/profile-placeholder.svg";
                                                 }}
                                             />
                                             
                                             {/* Bottom Fade Shadow - Hides cut edges */}
-                                            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-slate-50/90 via-slate-50/60 to-transparent dark:from-[#0d1117]/90 dark:via-[#0d1117]/60 dark:to-transparent pointer-events-none"></div>
+                                            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-slate-50/90 via-slate-50/60 to-transparent dark:from-[#0d1117]/90 dark:via-[#0d1117]/60 dark:to-transparent pointer-events-none z-20"></div>
                                         </div>
                                         
                                         {/* Minimal Status Indicator
