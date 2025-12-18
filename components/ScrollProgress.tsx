@@ -17,12 +17,12 @@ const ScrollProgress: React.FC = () => {
   return (
     <>
       {/* Top Progress Bar */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-slate-200/50 dark:bg-slate-800/50 z-50 backdrop-blur-sm">
+      {/* <div className="fixed top-0 left-0 w-full h-1 bg-slate-200/50 dark:bg-slate-800/50 z-50 backdrop-blur-sm">
         <div 
           className="h-full bg-gradient-to-r from-emerald-500 via-cyan-500 to-blue-500 transition-all duration-300 ease-out shadow-lg shadow-emerald-500/20"
           style={{ width: `${scrollProgress}%` }}
         />
-      </div>
+      </div> */}
 
       {/* Circular Progress Indicator - Hidden to avoid conflict with scroll to top button */}
       {/* 

@@ -41,10 +41,18 @@ const Skills: React.FC = () => {
                     </h3>
                   </div>
                   <div className="space-y-3">
-                    {['Java', 'C#', 'PHP', 'Python', 'JavaScript', 'TypeScript', 'C'].map((skill) => (
-                      <div key={skill} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full opacity-60"></div>
-                        <span className="font-medium">{skill}</span>
+                    {[
+                      { name: 'Java', icon: '☕' },
+                      { name: 'C#', icon: '🔷' },
+                      { name: 'PHP', icon: '🐘' },
+                      { name: 'Python', icon: '🐍' },
+                      { name: 'JavaScript', icon: '🟨' },
+                      { name: 'TypeScript', icon: '🔵' },
+                      { name: 'C', icon: '⚡' }
+                    ].map((skill) => (
+                      <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                        <span className="text-lg">{skill.icon}</span>
+                        <span className="font-medium">{skill.name}</span>
                       </div>
                     ))}
                   </div>
@@ -66,10 +74,21 @@ const Skills: React.FC = () => {
                     </h3>
                   </div>
                   <div className="space-y-3">
-                    {['Spring Boot', '.NET Core', 'ASP.NET', 'Node.js', 'Express', 'Hibernate', 'RESTful APIs', 'WebSocket', 'SignalR', 'Spring Security'].map((skill) => (
-                      <div key={skill} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full opacity-60"></div>
-                        <span className="font-medium">{skill}</span>
+                    {[
+                      { name: 'Spring Boot', icon: '🍃' },
+                      { name: '.NET Core', icon: '🔷' },
+                      { name: 'ASP.NET', icon: '🌐' },
+                      { name: 'Node.js', icon: '🟢' },
+                      { name: 'Express', icon: '⚡' },
+                      { name: 'Hibernate', icon: '💾' },
+                      { name: 'RESTful APIs', icon: '🔗' },
+                      { name: 'WebSocket', icon: '🔌' },
+                      { name: 'SignalR', icon: '📡' },
+                      { name: 'Spring Security', icon: '🔒' }
+                    ].map((skill) => (
+                      <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                        <span className="text-lg">{skill.icon}</span>
+                        <span className="font-medium">{skill.name}</span>
                       </div>
                     ))}
                   </div>
@@ -91,10 +110,18 @@ const Skills: React.FC = () => {
                     </h3>
                   </div>
                   <div className="space-y-3">
-                    {['ReactJS', 'React Native', 'AngularJS', 'Bootstrap', 'Thymeleaf', 'JSP/Servlet', 'XXF Themes'].map((skill) => (
-                      <div key={skill} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full opacity-60"></div>
-                        <span className="font-medium">{skill}</span>
+                    {[
+                      { name: 'ReactJS', icon: '⚛️' },
+                      { name: 'React Native', icon: '📱' },
+                      { name: 'AngularJS', icon: '🅰️' },
+                      { name: 'Bootstrap', icon: '🎨' },
+                      { name: 'Thymeleaf', icon: '🌿' },
+                      { name: 'JSP/Servlet', icon: '☕' },
+                      { name: 'XXF Themes', icon: '🎭' }
+                    ].map((skill) => (
+                      <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                        <span className="text-lg">{skill.icon}</span>
+                        <span className="font-medium">{skill.name}</span>
                       </div>
                     ))}
                   </div>
@@ -116,10 +143,14 @@ const Skills: React.FC = () => {
                     </h3>
                   </div>
                   <div className="space-y-3">
-                    {['SQL Server', 'MySQL', 'Firebase'].map((skill) => (
-                      <div key={skill} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full opacity-60"></div>
-                        <span className="font-medium">{skill}</span>
+                    {[
+                      { name: 'SQL Server', icon: '🗄️' },
+                      { name: 'MySQL', icon: '🐬' },
+                      { name: 'Firebase', icon: '🔥' }
+                    ].map((skill) => (
+                      <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                        <span className="text-lg">{skill.icon}</span>
+                        <span className="font-medium">{skill.name}</span>
                       </div>
                     ))}
                   </div>
@@ -141,10 +172,17 @@ const Skills: React.FC = () => {
                     </h3>
                   </div>
                   <div className="space-y-3">
-                    {['JUnit', 'TestNG', 'Selenium', 'Postman', 'Swagger', 'SEO Tools'].map((skill) => (
-                      <div key={skill} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full opacity-60"></div>
-                        <span className="font-medium">{skill}</span>
+                    {[
+                      { name: 'JUnit', icon: '🧪' },
+                      { name: 'TestNG', icon: '✅' },
+                      { name: 'Selenium', icon: '🤖' },
+                      { name: 'Postman', icon: '📮' },
+                      { name: 'Swagger', icon: '📋' },
+                      { name: 'SEO Tools', icon: '🔍' }
+                    ].map((skill) => (
+                      <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                        <span className="text-lg">{skill.icon}</span>
+                        <span className="font-medium">{skill.name}</span>
                       </div>
                     ))}
                   </div>
@@ -166,10 +204,19 @@ const Skills: React.FC = () => {
                     </h3>
                   </div>
                   <div className="space-y-3">
-                    {['WordPress', 'Baota Server', 'VPS', 'SEO Optimization', 'GitHub', 'Agile', 'Scrum', 'CMS Development'].map((skill) => (
-                      <div key={skill} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full opacity-60"></div>
-                        <span className="font-medium">{skill}</span>
+                    {[
+                      { name: 'WordPress', icon: '📝' },
+                      { name: 'Baota Server', icon: '🖥️' },
+                      { name: 'VPS', icon: '☁️' },
+                      { name: 'SEO Optimization', icon: '📈' },
+                      { name: 'GitHub', icon: '🐙' },
+                      { name: 'Agile', icon: '🔄' },
+                      { name: 'Scrum', icon: '🏃' },
+                      { name: 'CMS Development', icon: '🏗️' }
+                    ].map((skill) => (
+                      <div key={skill.name} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                        <span className="text-lg">{skill.icon}</span>
+                        <span className="font-medium">{skill.name}</span>
                       </div>
                     ))}
                   </div>
