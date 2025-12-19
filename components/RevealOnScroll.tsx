@@ -27,8 +27,8 @@ const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
         }
       },
       {
-        threshold: 0.1, // Trigger when 10% of the element is visible
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0.05, // Trigger earlier when only 5% is visible
+        rootMargin: "0px 0px -20px 0px" // Reduced margin for earlier trigger
       }
     );
 

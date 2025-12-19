@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
                     </div>
                 </RevealOnScroll>
 
-                <RevealOnScroll direction="bottom" delay={100}>
+                <RevealOnScroll direction="bottom" delay={50}>
                     <div className="relative mb-8">
                         {/* Greeting */}
                         <div className="mb-6">
@@ -83,13 +83,13 @@ const Hero: React.FC = () => {
                             
                             {/* Enhanced Decorative Elements */}
                             <div className="absolute -top-6 -right-6 w-10 h-10 bg-gradient-to-br from-emerald-400/30 to-cyan-400/30 rounded-full animate-pulse"></div>
-                            <div className="absolute -bottom-6 -left-6 w-8 h-8 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-full animate-pulse delay-1000"></div>
-                            <div className="absolute top-1/2 -right-8 w-6 h-6 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full animate-pulse delay-500"></div>
+                            <div className="absolute -bottom-6 -left-6 w-8 h-8 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-full animate-pulse delay-500"></div>
+                            <div className="absolute top-1/2 -right-8 w-6 h-6 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full animate-pulse delay-300"></div>
                         </h1>
                     </div>
                 </RevealOnScroll>
 
-                <RevealOnScroll direction="bottom" delay={200}>
+                <RevealOnScroll direction="bottom" delay={100}>
                    <div className="mb-12 relative">
                         {/* Enhanced Title */}
                         <div className="relative inline-block">

@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
 import AdminDashboard from './admin/AdminDashboard';
 import EnhancedEffects from './components/EnhancedEffects';
+import SmoothScrollOptimizer from './components/SmoothScrollOptimizer';
 
 
 
@@ -228,6 +229,9 @@ const Portfolio: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-slate-200 font-sans selection:bg-emerald-500/30 selection:text-emerald-800 dark:selection:text-emerald-200 relative overflow-x-hidden transition-colors duration-300">
       
+      {/* Smooth Scroll Optimizer */}
+      <SmoothScrollOptimizer />
+      
       {/* Enhanced Effects Layer */}
       <EnhancedEffects />
       
@@ -274,7 +278,12 @@ const Portfolio: React.FC = () => {
 
 function App() {
   return (
-    <Router>
+    <Router
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true
+      }}
+    >
       <Routes>
         <Route path="/" element={<Portfolio />} />
         <Route path="/admin" element={<AdminDashboard />} />

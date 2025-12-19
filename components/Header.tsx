@@ -24,7 +24,7 @@ const Header: React.FC = () => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          return rect.top >= -300 && rect.top <= 300;
+          return rect.top >= -200 && rect.top <= 200; // Faster section switching
         }
         return false;
       });
@@ -56,9 +56,11 @@ const Header: React.FC = () => {
     setIsMobileMenuOpen(false);
     const element = document.querySelector(href);
     if (element) {
-      window.scrollTo({
-        top: element.getBoundingClientRect().top + window.pageYOffset - 80,
-        behavior: "smooth"
+      // Use native smooth scroll for better performance
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
       });
     }
   };

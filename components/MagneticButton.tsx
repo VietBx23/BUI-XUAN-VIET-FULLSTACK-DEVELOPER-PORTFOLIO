@@ -28,14 +28,23 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
     const deltaX = (e.clientX - centerX) * intensity;
     const deltaY = (e.clientY - centerY) * intensity;
 
-    buttonRef.current.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${isHovered ? 1.05 : 1})`;
+    // Use requestAnimationFrame for smoother updates
+    requestAnimationFrame(() => {
+      if (buttonRef.current) {
+        buttonRef.current.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${isHovered ? 1.03 : 1})`;
+      }
+    });
   };
 
   const handleMouseLeave = () => {
     if (!buttonRef.current) return;
     
     setIsHovered(false);
-    buttonRef.current.style.transform = 'translate(0px, 0px) scale(1)';
+    requestAnimationFrame(() => {
+      if (buttonRef.current) {
+        buttonRef.current.style.transform = 'translate(0px, 0px) scale(1)';
+      }
+    });
   };
 
   const handleMouseEnter = () => {
@@ -56,7 +65,7 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
       onMouseEnter={handleMouseEnter}
       onClick={handleClick}
       style={{ 
-        transition: 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)',
+        transition: 'transform 0.2s cubic-bezier(0.23, 1, 0.32, 1)', // Faster response
         willChange: 'transform'
       }}
     >

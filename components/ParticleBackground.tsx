@@ -44,7 +44,7 @@ const ParticleBackground: React.FC = () => {
 
     const createParticles = () => {
       const particles: Particle[] = [];
-      const particleCount = Math.min(50, Math.floor((canvas.width * canvas.height) / 15000));
+      const particleCount = Math.min(35, Math.floor((canvas.width * canvas.height) / 20000)); // Reduced particles for better performance
       
       for (let i = 0; i < particleCount; i++) {
         particles.push({
@@ -75,8 +75,8 @@ const ParticleBackground: React.FC = () => {
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
-          if (distance < 120) {
-            const opacity = (120 - distance) / 120 * 0.2;
+          if (distance < 100) { // Reduced connection distance for better performance
+            const opacity = (100 - distance) / 100 * 0.15;
             ctx.strokeStyle = isDark ? 
               `rgba(16,185,129, ${opacity})` : 
               `rgba(16,185,129, ${opacity * 0.5})`;
@@ -116,10 +116,10 @@ const ParticleBackground: React.FC = () => {
         const dy = mouse.y - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         
-        if (distance < 100) {
-          const force = (100 - distance) / 100;
-          particle.vx += (dx / distance) * force * 0.01;
-          particle.vy += (dy / distance) * force * 0.01;
+        if (distance < 80) { // Reduced mouse interaction range
+          const force = (80 - distance) / 80;
+          particle.vx += (dx / distance) * force * 0.008; // Reduced force for smoother movement
+          particle.vy += (dy / distance) * force * 0.008;
         }
         
         // Update position
