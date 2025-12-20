@@ -23,90 +23,93 @@ const Footer: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // Xử lý form contact bằng JavaScript - Lưu vào localStorage
-      const contactMessage = {
-        id: Date.now().toString() + Math.random().toString(36).substring(2, 11),
-        name: formState.name,
-        email: formState.email,
-        subject: formState.subject,
-        message: formState.message,
-        timestamp: Date.now(),
-        isRead: false,
-        isStarred: false
-      };
+      // Gửi email qua Vite API
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          subject: formState.subject,
+          message: formState.message
+        })
+      });
 
-      // Lấy messages hiện có từ localStorage
-      const existingMessages = localStorage.getItem('portfolio_contact_messages');
-      let messages = [];
-      
-      if (existingMessages) {
-        try {
-          messages = JSON.parse(existingMessages);
-        } catch (error) {
-          console.error('Error parsing existing messages:', error);
-          messages = [];
-        }
-      }
+      const result = await response.json();
 
-      // Thêm message mới vào đầu array
-      messages.unshift(contactMessage);
-
-      // Giới hạn chỉ lưu 100 messages gần nhất
-      if (messages.length > 100) {
-        messages = messages.slice(0, 100);
-      }
-
-      // Lưu lại vào localStorage
-      localStorage.setItem('portfolio_contact_messages', JSON.stringify(messages));
-
-      // Tạo response giả để tương thích với code hiện tại
-      const response = { ok: true };
-
-      if (response.ok) {
-        // Thành công - reset form và hiển thị thông báo
+      if (result.success) {
+        // Reset form
         setFormState({ name: '', email: '', subject: '', message: '' });
         
-        // Hiển thị thông báo thành công ngắn gọn
+        // Lưu vào localStorage để admin có thể xem
+        const contactMessage = {
+          id: Date.now().toString() + Math.random().toString(36).substring(2, 11),
+          name: formState.name,
+          email: formState.email,
+          subject: formState.subject,
+          message: formState.message,
+          timestamp: Date.now(),
+          isRead: false,
+          isStarred: false
+        };
+
+        const existingMessages = localStorage.getItem('portfolio_contact_messages');
+        let messages = [];
+        
+        if (existingMessages) {
+          try {
+            messages = JSON.parse(existingMessages);
+          } catch (error) {
+            messages = [];
+          }
+        }
+
+        messages.unshift(contactMessage);
+        if (messages.length > 100) {
+          messages = messages.slice(0, 100);
+        }
+        localStorage.setItem('portfolio_contact_messages', JSON.stringify(messages));
+        
+        // Show success message
         const successMessage = document.createElement('div');
         successMessage.innerHTML = `
           <div style="position: fixed; top: 20px; right: 20px; background: #10b981; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); z-index: 9999; font-weight: 600;">
-            ✅ Send successful
+            ✅ Email sent successfully!
           </div>
         `;
         document.body.appendChild(successMessage);
         
         setTimeout(() => {
-          document.body.removeChild(successMessage);
-        }, 3000);
+          if (document.body.contains(successMessage)) {
+            document.body.removeChild(successMessage);
+          }
+        }, 4000);
 
-        // Log để debug
-        console.log('Contact message saved:', contactMessage);
-        console.log('Total messages:', messages.length);
+        console.log('📧 Email sent to vietbx23@gmail.com');
       } else {
-        throw new Error('Failed to save message');
+        throw new Error(result.message || 'Failed to send email');
       }
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('❌ Error:', error);
       
-      // Log error for debugging
-      
-      // Hiển thị thông báo lỗi
       const errorMessage = document.createElement('div');
       errorMessage.innerHTML = `
         <div style="position: fixed; top: 20px; right: 20px; background: #ef4444; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3); z-index: 9999; font-weight: 600;">
-          ❌ Failed to save message. Please try again.
+          ❌ Failed to send email. Please try again.
         </div>
       `;
       document.body.appendChild(errorMessage);
       
       setTimeout(() => {
-        document.body.removeChild(errorMessage);
+        if (document.body.contains(errorMessage)) {
+          document.body.removeChild(errorMessage);
+        }
       }, 5000);
-
-      console.error('Error saving contact message:', error);
+    } finally {
+      setIsSubmitting(false);
     }
-    
-    setIsSubmitting(false);
   };
 
   return (
