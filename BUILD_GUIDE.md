@@ -78,13 +78,23 @@ npm run deploy:preview   # Build và deploy lên Vercel preview
    npm run deploy
    ```
 
-## Environment Variables
+## Vercel Deployment
 
-Cần thiết cho development:
-```env
-GMAIL_USER=your-email@gmail.com
-GMAIL_APP_PASSWORD=your-app-password
-```
+### Cấu hình đã tối ưu:
+- Loại bỏ serverless functions (không cần thiết)
+- Loại bỏ environment variables (không cần thiết)
+- Chỉ giữ SPA routing với rewrites
+
+### Deploy steps:
+1. `npm run build` - Build thành công
+2. `npm run deploy` - Deploy lên Vercel
+3. Form sẽ hoạt động với localStorage fallback
+
+### Không cần setup:
+- ❌ Environment variables
+- ❌ Vercel secrets
+- ❌ Serverless functions
+- ❌ Email configuration
 
 ## Lưu ý Production
 
