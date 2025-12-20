@@ -21,7 +21,8 @@ const ProjectsManager: React.FC<ProjectsManagerProps> = ({ onDataChange }) => {
     tech: [],
     description: '',
     links: [],
-    images: []
+    images: [],
+    iframeUrl: ''
   };
 
   const [newProject, setNewProject] = useState<ProjectData>(emptyProject);
@@ -253,6 +254,22 @@ const ProjectsManager: React.FC<ProjectsManagerProps> = ({ onDataChange }) => {
             rows={4}
             placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"
           />
+        </div>
+
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+            Live Preview URL (optional)
+          </label>
+          <input
+            type="url"
+            value={project.iframeUrl || ''}
+            onChange={(e) => onChange({ ...project, iframeUrl: e.target.value })}
+            className="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:border-emerald-500"
+            placeholder="https://example.com - Will show live preview instead of images"
+          />
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            If provided, this will display an interactive iframe instead of image carousel
+          </p>
         </div>
 
         <div className="flex gap-3">

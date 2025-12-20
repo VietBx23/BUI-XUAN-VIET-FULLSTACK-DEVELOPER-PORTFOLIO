@@ -14,6 +14,7 @@ export interface ProjectData {
   links: LinkData[];
   highlights?: string[];
   images?: string[]; // Changed from single string to array
+  iframeUrl?: string; // New field for iframe support
 }
 
 export interface ExperienceData {

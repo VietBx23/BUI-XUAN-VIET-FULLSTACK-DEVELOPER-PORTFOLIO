@@ -98,7 +98,7 @@ export const EXPERIENCE: ExperienceData[] = [
   }
 ];
 
-export const PROJECTS: ProjectData[] = [
+export const MAIN_PROJECTS: ProjectData[] = [
   {
     title: "EV Charging Station Management Platform",
     period: "06/2024 – 10/2024",
@@ -106,10 +106,10 @@ export const PROJECTS: ProjectData[] = [
     description: "A large-scale management platform for electric vehicle charging stations. The system enables real-time monitoring, user management, multi-payment support, charger control, performance analytics, and detailed reports. Deployed on VPS and designed for scalability and reliability.",
     links: [],
     images: [
-        "https://images.unsplash.com/photo-1669476022830-580a5522513a?q=80&w=1600&auto=format&fit=crop", // EV Charging
-        "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=1600&auto=format&fit=crop", // EV Station
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop", // Analytics Dashboard
-        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&auto=format&fit=crop" // Server/Tech
+        "/Images/platfrom-ev.png",
+        "/Images/platfrom-ev2.png",
+        "/Images/platfrom-ev3.png",
+        "/Images/platfrom-ev4.png"
     ]
   },
   {
@@ -123,10 +123,10 @@ export const PROJECTS: ProjectData[] = [
       { label: "GitHub", url: "https://github.com/VietBx23/APP-SOLAREV", type: "github" }
     ],
     images: [
-        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1600&auto=format&fit=crop", // Mobile App UI
-        "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=1600&auto=format&fit=crop", // App Dashboard
-        "https://images.unsplash.com/photo-1622737133809-d95047b9e673?q=80&w=1600&auto=format&fit=crop", // Map/Navigation
-        "https://images.unsplash.com/photo-1596742578443-7682ef5251cd?q=80&w=1600&auto=format&fit=crop" // QR Code / Payment
+        "/Images/appsolarev.png",
+        "/Images/appsolarev2.png",
+        "/Images/appsolarev3.png",
+        "/Images/appsolarev4.png"
     ]
   },
   {
@@ -139,10 +139,9 @@ export const PROJECTS: ProjectData[] = [
       { label: "FocusSolar.vn", url: "https://focussolar.vn/", type: "live" }
     ],
     images: [
-        "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=1600&auto=format&fit=crop", // Modern Office/Web
-        "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1600&auto=format&fit=crop", // Solar Panels
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop", // Website Dashboard
-        "https://images.unsplash.com/photo-1486406140526-918346dca647?q=80&w=1600&auto=format&fit=crop" // Corporate Building
+        "/Images/websolarev1.png",
+        "/Images/websolarev2.png",
+        "/Images/websolarev3.png"
     ]
   },
   {
@@ -154,10 +153,11 @@ export const PROJECTS: ProjectData[] = [
       { label: "GitHub", url: "https://github.com/VietBx23/WebsiteSneaker", type: "github" }
     ],
     images: [
-        "https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=1600&auto=format&fit=crop", // Sneakers
-        "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=1600&auto=format&fit=crop", // E-commerce Payment
-        "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=1600&auto=format&fit=crop", // Shoes Collection
-        "https://images.unsplash.com/photo-1472851294608-4155f2118c03?q=80&w=1600&auto=format&fit=crop" // Shopping
+        "/Images/sneaker.png",
+        "/Images/sneaker2.png",
+        "/Images/sneaker3.png",
+        "/Images/sneaker4.png",
+        "/Images/sneaker5.png"
     ]
   },
   {
@@ -169,13 +169,104 @@ export const PROJECTS: ProjectData[] = [
       { label: "GitHub", url: "https://github.com/VietBx23/ShoeManagementApp", type: "github" }
     ],
     images: [
-        "https://images.unsplash.com/photo-1556155092-490a1ba16284?q=80&w=1600&auto=format&fit=crop", // Software/Dashboard
-        "https://images.unsplash.com/photo-1449247709967-d4461a6a6103?q=80&w=1600&auto=format&fit=crop", // Desktop Work
-        "https://images.unsplash.com/photo-1566576912906-254d7943f670?q=80&w=1600&auto=format&fit=crop", // Warehouse
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1600&auto=format&fit=crop" // Analytics
+        "/Images/sneaker.png",
+        "/Images/sneaker2.png",
+        "/Images/sneaker3.png",
+        "/Images/sneaker4.png"
     ]
   }
 ];
+
+export const TOOLS_AND_WEBSITES: ProjectData[] = [
+  {
+    title: "Article Creator Tool",
+    period: "2024 – Present",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "AI Integration", "SEO"],
+    description: "AI-powered tool for quickly generating high-quality articles with SEO optimization, automated content structure, and publishing workflows.",
+    links: [
+      { label: "Live Demo", url: "https://quickly-create-articles.vercel.app/", type: "live" }
+    ],
+    images: [
+        "/Images/websolarev1.png",
+        "/Images/websolarev2.png"
+    ],
+    iframeUrl: "https://quickly-create-articles.vercel.app/"
+  },
+  {
+    title: "Google Sites Content Creator",
+    period: "2024 – Present",
+    tech: ["Next.js", "React", "TypeScript", "Google Sites API", "Content Generation"],
+    description: "Specialized tool for creating optimized content specifically for Google Sites with templates, formatting, and direct integration capabilities.",
+    links: [
+      { label: "Live Demo", url: "https://create-content-google-site.vercel.app/", type: "live" }
+    ],
+    images: [
+        "/Images/websolarev1.png",
+        "/Images/websolarev2.png"
+    ],
+    iframeUrl: "https://create-content-google-site.vercel.app/"
+  },
+  {
+    title: "Content Creation Tool",
+    period: "2024 – Present",
+    tech: ["Next.js", "React", "TypeScript", "AI Content Generation", "Templates"],
+    description: "Versatile content creation platform with multiple templates, AI assistance, and export options for various content formats and platforms.",
+    links: [
+      { label: "Live Demo", url: "https://tool-create-content.vercel.app/", type: "live" }
+    ],
+    images: [
+        "/Images/websolarev1.png",
+        "/Images/websolarev2.png"
+    ],
+    iframeUrl: "https://tool-create-content.vercel.app/"
+  },
+  {
+    title: "Site Article Creator",
+    period: "2024 – Present",
+    tech: ["Next.js", "React", "TypeScript", "Article Templates", "SEO Tools"],
+    description: "Focused tool for creating website articles with built-in SEO optimization, readability analysis, and multiple export formats.",
+    links: [
+      { label: "Live Demo", url: "https://create-google-site-article.vercel.app/", type: "live" }
+    ],
+    images: [
+        "/Images/websolarev1.png",
+        "/Images/websolarev2.png"
+    ],
+    iframeUrl: "https://create-google-site-article.vercel.app/"
+  },
+  {
+    title: "Green Architecture Website",
+    period: "2024 – Present", 
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Responsive Design"],
+    description: "Modern responsive website for green architecture and landscape design company featuring portfolio showcases, service presentations, and eco-friendly design principles.",
+    links: [
+      { label: "Live Website", url: "https://canh-quan-kien-truc-xanh.vercel.app/", type: "live" }
+    ],
+    images: [
+        "/Images/websolarev1.png",
+        "/Images/websolarev2.png"
+    ],
+    iframeUrl: "https://canh-quan-kien-truc-xanh.vercel.app/"
+  },
+  {
+    title: "ANT Construction Website",
+    period: "2024 – Present", 
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Modern UI/UX"],
+    description: "Professional construction company website with project galleries, service details, team information, and client testimonials with optimized performance.",
+    links: [
+      { label: "Live Website", url: "https://ant-construction.vercel.app/", type: "live" }
+    ],
+    images: [
+        "/Images/websolarev1.png",
+        "/Images/websolarev2.png"
+    ],
+    iframeUrl: "https://ant-construction.vercel.app/"
+  }
+];
+
+// For backward compatibility
+export const PROJECTS: ProjectData[] = [...MAIN_PROJECTS, ...TOOLS_AND_WEBSITES];
+
 
 export const EDUCATION: EducationData = {
   school: "FPT Polytechnic Ho Chi Minh",
