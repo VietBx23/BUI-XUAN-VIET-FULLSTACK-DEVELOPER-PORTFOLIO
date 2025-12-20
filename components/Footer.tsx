@@ -55,44 +55,42 @@ const Footer: React.FC = () => {
     setFormState({ name: '', email: '', subject: '', message: '' });
 
     try {
-      // Chỉ thử gửi email trong development
-      if (import.meta.env.DEV) {
-        const response = await fetch('/api/send-email', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(contactMessage)
-        });
+      // Thử gửi email qua API (cả dev và production)
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contactMessage)
+      });
 
-        if (response.ok) {
-          const result = await response.json();
-          if (result.success) {
-            // Show success message for development
-            const successMessage = document.createElement('div');
-            successMessage.innerHTML = `
-              <div style="position: fixed; top: 20px; right: 20px; background: #10b981; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); z-index: 9999; font-weight: 600;">
-                ✅ Email sent successfully!
-              </div>
-            `;
-            document.body.appendChild(successMessage);
-            
-            setTimeout(() => {
-              if (document.body.contains(successMessage)) {
-                document.body.removeChild(successMessage);
-              }
-            }, 4000);
-            
-            setIsSubmitting(false);
-            return;
-          }
+      if (response.ok) {
+        const result = await response.json();
+        if (result.success) {
+          // Show success message
+          const successMessage = document.createElement('div');
+          successMessage.innerHTML = `
+            <div style="position: fixed; top: 20px; right: 20px; background: #10b981; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); z-index: 9999; font-weight: 600;">
+              ✅ Email sent successfully!
+            </div>
+          `;
+          document.body.appendChild(successMessage);
+          
+          setTimeout(() => {
+            if (document.body.contains(successMessage)) {
+              document.body.removeChild(successMessage);
+            }
+          }, 4000);
+          
+          setIsSubmitting(false);
+          return;
         }
       }
     } catch (error) {
       console.log('Email API not available, using fallback');
     }
 
-    // Fallback message (cho production hoặc khi API fail)
+    // Fallback message (khi API không khả dụng)
     const fallbackMessage = document.createElement('div');
     fallbackMessage.innerHTML = `
       <div style="position: fixed; top: 20px; right: 20px; background: #f59e0b; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3); z-index: 9999; font-weight: 600;">
