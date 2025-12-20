@@ -22,51 +22,29 @@ const Footer: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Lưu message vào localStorage trước
-    const contactMessage = {
-      id: Date.now().toString() + Math.random().toString(36).substring(2, 11),
+    const contactData = {
       name: formState.name,
       email: formState.email,
       subject: formState.subject,
-      message: formState.message,
-      timestamp: Date.now(),
-      isRead: false,
-      isStarred: false
+      message: formState.message
     };
 
-    const existingMessages = localStorage.getItem('portfolio_contact_messages');
-    let messages = [];
-    
-    if (existingMessages) {
-      try {
-        messages = JSON.parse(existingMessages);
-      } catch (error) {
-        messages = [];
-      }
-    }
-
-    messages.unshift(contactMessage);
-    if (messages.length > 100) {
-      messages = messages.slice(0, 100);
-    }
-    localStorage.setItem('portfolio_contact_messages', JSON.stringify(messages));
-    
-    // Reset form
-    setFormState({ name: '', email: '', subject: '', message: '' });
-
     try {
-      // Thử gửi email qua API (cả dev và production)
+      // Gửi email qua API
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(contactMessage)
+        body: JSON.stringify(contactData)
       });
 
       if (response.ok) {
         const result = await response.json();
         if (result.success) {
+          // CHỈ reset form khi gửi thành công
+          setFormState({ name: '', email: '', subject: '', message: '' });
+          
           // Show success message
           const successMessage = document.createElement('div');
           successMessage.innerHTML = `
@@ -87,14 +65,14 @@ const Footer: React.FC = () => {
         }
       }
     } catch (error) {
-      console.log('Email API not available, using fallback');
+      console.log('Email API error:', error);
     }
 
-    // Fallback message (khi API không khả dụng)
+    // Nếu gửi thất bại, KHÔNG reset form, giữ nguyên dữ liệu
     const fallbackMessage = document.createElement('div');
     fallbackMessage.innerHTML = `
-      <div style="position: fixed; top: 20px; right: 20px; background: #f59e0b; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3); z-index: 9999; font-weight: 600;">
-        📝 Message saved! Please email me directly at ${PERSONAL_INFO.email}
+      <div style="position: fixed; top: 20px; right: 20px; background: #ef4444; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3); z-index: 9999; font-weight: 600;">
+        ❌ Failed to send email. Please try again or contact me directly at ${PERSONAL_INFO.email}
       </div>
     `;
     document.body.appendChild(fallbackMessage);
@@ -103,7 +81,7 @@ const Footer: React.FC = () => {
       if (document.body.contains(fallbackMessage)) {
         document.body.removeChild(fallbackMessage);
       }
-    }, 8000);
+    }, 6000);
 
     setIsSubmitting(false);
   };
