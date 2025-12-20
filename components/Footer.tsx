@@ -22,140 +22,92 @@ const Footer: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    // Lưu message vào localStorage trước
+    const contactMessage = {
+      id: Date.now().toString() + Math.random().toString(36).substring(2, 11),
+      name: formState.name,
+      email: formState.email,
+      subject: formState.subject,
+      message: formState.message,
+      timestamp: Date.now(),
+      isRead: false,
+      isStarred: false
+    };
+
+    const existingMessages = localStorage.getItem('portfolio_contact_messages');
+    let messages = [];
+    
+    if (existingMessages) {
+      try {
+        messages = JSON.parse(existingMessages);
+      } catch (error) {
+        messages = [];
+      }
+    }
+
+    messages.unshift(contactMessage);
+    if (messages.length > 100) {
+      messages = messages.slice(0, 100);
+    }
+    localStorage.setItem('portfolio_contact_messages', JSON.stringify(messages));
+    
+    // Reset form
+    setFormState({ name: '', email: '', subject: '', message: '' });
+
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formState.name,
-          email: formState.email,
-          subject: formState.subject,
-          message: formState.message
-        })
-      });
+      // Chỉ thử gửi email trong development
+      if (import.meta.env.DEV) {
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(contactMessage)
+        });
 
-      let result;
-      const contentType = response.headers.get('content-type');
-      
-      if (contentType && contentType.includes('application/json')) {
-        try {
-          result = await response.json();
-        } catch (jsonError) {
-          console.error('JSON parsing error:', jsonError);
-          throw new Error('Invalid response format');
-        }
-      } else {
-        // If not JSON, treat as error
-        const text = await response.text();
-        console.error('Non-JSON response:', text);
-        throw new Error('API endpoint not available');
-      }
-
-      if (!response.ok) {
-        throw new Error(result?.message || `HTTP error! status: ${response.status}`);
-      }
-
-      if (result.success) {
-        // Reset form
-        setFormState({ name: '', email: '', subject: '', message: '' });
-        
-        // Lưu vào localStorage để admin có thể xem
-        const contactMessage = {
-          id: Date.now().toString() + Math.random().toString(36).substring(2, 11),
-          name: formState.name,
-          email: formState.email,
-          subject: formState.subject,
-          message: formState.message,
-          timestamp: Date.now(),
-          isRead: false,
-          isStarred: false
-        };
-
-        const existingMessages = localStorage.getItem('portfolio_contact_messages');
-        let messages = [];
-        
-        if (existingMessages) {
-          try {
-            messages = JSON.parse(existingMessages);
-          } catch (error) {
-            messages = [];
+        if (response.ok) {
+          const result = await response.json();
+          if (result.success) {
+            // Show success message for development
+            const successMessage = document.createElement('div');
+            successMessage.innerHTML = `
+              <div style="position: fixed; top: 20px; right: 20px; background: #10b981; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); z-index: 9999; font-weight: 600;">
+                ✅ Email sent successfully!
+              </div>
+            `;
+            document.body.appendChild(successMessage);
+            
+            setTimeout(() => {
+              if (document.body.contains(successMessage)) {
+                document.body.removeChild(successMessage);
+              }
+            }, 4000);
+            
+            setIsSubmitting(false);
+            return;
           }
         }
-
-        messages.unshift(contactMessage);
-        if (messages.length > 100) {
-          messages = messages.slice(0, 100);
-        }
-        localStorage.setItem('portfolio_contact_messages', JSON.stringify(messages));
-        
-        // Show success message
-        const successMessage = document.createElement('div');
-        successMessage.innerHTML = `
-          <div style="position: fixed; top: 20px; right: 20px; background: #10b981; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); z-index: 9999; font-weight: 600;">
-            ✅ Message saved! Please contact me directly at ${PERSONAL_INFO.email}
-          </div>
-        `;
-        document.body.appendChild(successMessage);
-        
-        setTimeout(() => {
-          if (document.body.contains(successMessage)) {
-            document.body.removeChild(successMessage);
-          }
-        }, 6000);
-
-      } else {
-        throw new Error(result.message || 'Failed to send email');
       }
     } catch (error) {
-      console.error('❌ Error:', error);
-      
-      // Fallback: Save to localStorage and show alternative message
-      const contactMessage = {
-        id: Date.now().toString() + Math.random().toString(36).substring(2, 11),
-        name: formState.name,
-        email: formState.email,
-        subject: formState.subject,
-        message: formState.message,
-        timestamp: Date.now(),
-        isRead: false,
-        isStarred: false
-      };
-
-      const existingMessages = localStorage.getItem('portfolio_contact_messages');
-      let messages = [];
-      
-      if (existingMessages) {
-        try {
-          messages = JSON.parse(existingMessages);
-        } catch (error) {
-          messages = [];
-        }
-      }
-
-      messages.unshift(contactMessage);
-      localStorage.setItem('portfolio_contact_messages', JSON.stringify(messages));
-      
-      // Reset form
-      setFormState({ name: '', email: '', subject: '', message: '' });
-      
-      const errorMessage = document.createElement('div');
-      errorMessage.innerHTML = `
-        <div style="position: fixed; top: 20px; right: 20px; background: #f59e0b; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3); z-index: 9999; font-weight: 600;">
-          📝 Message saved locally! Please email me directly at ${PERSONAL_INFO.email}
-        </div>
-      `;
-      document.body.appendChild(errorMessage);
-      
-      setTimeout(() => {
-        if (document.body.contains(errorMessage)) {
-          document.body.removeChild(errorMessage);
-        }
-      }, 8000);
-    } finally {
-      setIsSubmitting(false);
+      console.log('Email API not available, using fallback');
     }
+
+    // Fallback message (cho production hoặc khi API fail)
+    const fallbackMessage = document.createElement('div');
+    fallbackMessage.innerHTML = `
+      <div style="position: fixed; top: 20px; right: 20px; background: #f59e0b; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3); z-index: 9999; font-weight: 600;">
+        📝 Message saved! Please email me directly at ${PERSONAL_INFO.email}
+      </div>
+    `;
+    document.body.appendChild(fallbackMessage);
+    
+    setTimeout(() => {
+      if (document.body.contains(fallbackMessage)) {
+        document.body.removeChild(fallbackMessage);
+      }
+    }, 8000);
+
+    setIsSubmitting(false);
   };
 
   return (
