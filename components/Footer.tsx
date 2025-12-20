@@ -23,7 +23,6 @@ const Footer: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // Sử dụng URL duy nhất - Vite sẽ proxy đến email server
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
@@ -37,11 +36,26 @@ const Footer: React.FC = () => {
         })
       });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      let result;
+      const contentType = response.headers.get('content-type');
+      
+      if (contentType && contentType.includes('application/json')) {
+        try {
+          result = await response.json();
+        } catch (jsonError) {
+          console.error('JSON parsing error:', jsonError);
+          throw new Error('Invalid response format');
+        }
+      } else {
+        // If not JSON, treat as error
+        const text = await response.text();
+        console.error('Non-JSON response:', text);
+        throw new Error('API endpoint not available');
       }
 
-      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result?.message || `HTTP error! status: ${response.status}`);
+      }
 
       if (result.success) {
         // Reset form
@@ -80,7 +94,7 @@ const Footer: React.FC = () => {
         const successMessage = document.createElement('div');
         successMessage.innerHTML = `
           <div style="position: fixed; top: 20px; right: 20px; background: #10b981; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); z-index: 9999; font-weight: 600;">
-            ✅ Email sent successfully!
+            ✅ Message saved! Please contact me directly at ${PERSONAL_INFO.email}
           </div>
         `;
         document.body.appendChild(successMessage);
@@ -89,19 +103,47 @@ const Footer: React.FC = () => {
           if (document.body.contains(successMessage)) {
             document.body.removeChild(successMessage);
           }
-        }, 4000);
+        }, 6000);
 
-        // console.log('📧 Email sent to vietbx23@gmail.com');
       } else {
         throw new Error(result.message || 'Failed to send email');
       }
     } catch (error) {
       console.error('❌ Error:', error);
       
+      // Fallback: Save to localStorage and show alternative message
+      const contactMessage = {
+        id: Date.now().toString() + Math.random().toString(36).substring(2, 11),
+        name: formState.name,
+        email: formState.email,
+        subject: formState.subject,
+        message: formState.message,
+        timestamp: Date.now(),
+        isRead: false,
+        isStarred: false
+      };
+
+      const existingMessages = localStorage.getItem('portfolio_contact_messages');
+      let messages = [];
+      
+      if (existingMessages) {
+        try {
+          messages = JSON.parse(existingMessages);
+        } catch (error) {
+          messages = [];
+        }
+      }
+
+      messages.unshift(contactMessage);
+      localStorage.setItem('portfolio_contact_messages', JSON.stringify(messages));
+      
+      // Reset form
+      setFormState({ name: '', email: '', subject: '', message: '' });
+      
       const errorMessage = document.createElement('div');
       errorMessage.innerHTML = `
-        <div style="position: fixed; top: 20px; right: 20px; background: #ef4444; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3); z-index: 9999; font-weight: 600;">
-          ❌ Failed to send email. Please try again.
+        <div style="position: fixed; top: 20px; right: 20px; background: #f59e0b; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3); z-index: 9999; font-weight: 600;">
+          📝 Message saved locally! Please email me directly at ${PERSONAL_INFO.email}
         </div>
       `;
       document.body.appendChild(errorMessage);
@@ -110,7 +152,7 @@ const Footer: React.FC = () => {
         if (document.body.contains(errorMessage)) {
           document.body.removeChild(errorMessage);
         }
-      }, 5000);
+      }, 8000);
     } finally {
       setIsSubmitting(false);
     }
