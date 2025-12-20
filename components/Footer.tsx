@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // Gửi email qua Vite API
+      // Sử dụng URL duy nhất - Vite sẽ proxy đến email server
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
@@ -36,6 +36,10 @@ const Footer: React.FC = () => {
           message: formState.message
         })
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
       const result = await response.json();
 
@@ -87,7 +91,7 @@ const Footer: React.FC = () => {
           }
         }, 4000);
 
-        console.log('📧 Email sent to vietbx23@gmail.com');
+        // console.log('📧 Email sent to vietbx23@gmail.com');
       } else {
         throw new Error(result.message || 'Failed to send email');
       }

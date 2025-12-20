@@ -6,32 +6,24 @@ import dotenv from 'dotenv'
 // Load environment variables
 dotenv.config()
 
-// Create email transporter
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_APP_PASSWORD
-  }
-})
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    // Custom plugin for email API
+    // Email API plugin
     {
       name: 'email-api',
       configureServer(server) {
         server.middlewares.use('/api/send-email', async (req, res) => {
           if (req.method !== 'POST') {
             res.statusCode = 405
-            res.end('Method Not Allowed')
+            res.setHeader('Content-Type', 'application/json')
+            res.end(JSON.stringify({ success: false, message: 'Method Not Allowed' }))
             return
           }
 
           let body = ''
-          req.on('data', chunk => {
+          req.on('data', (chunk: Buffer) => {
             body += chunk.toString()
           })
 
@@ -45,6 +37,15 @@ export default defineConfig({
                 res.end(JSON.stringify({ success: false, message: 'Missing required fields' }))
                 return
               }
+
+              // Create transporter
+              const transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                  user: process.env.GMAIL_USER,
+                  pass: process.env.GMAIL_APP_PASSWORD
+                }
+              })
 
               // Send email
               await transporter.sendMail({
@@ -99,8 +100,21 @@ export default defineConfig({
   ],
   build: {
     outDir: 'dist',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom']
+        }
+      }
+    }
   },
   server: {
-    historyApiFallback: true
+    port: 3000,
+    open: true
+  },
+  preview: {
+    port: 4173
   }
 })
