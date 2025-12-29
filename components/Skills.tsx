@@ -27,7 +27,7 @@ const Skills: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               
               {/* Programming Languages */}
-              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-all duration-300">
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-colors duration-300 will-change-auto">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
                     💻
@@ -55,7 +55,7 @@ const Skills: React.FC = () => {
               </div>
 
               {/* Backend Frameworks */}
-              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-all duration-300">
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-colors duration-300 will-change-auto">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
                     ⚙️
@@ -86,7 +86,7 @@ const Skills: React.FC = () => {
               </div>
 
               {/* Frontend & Mobile */}
-              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-all duration-300">
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-colors duration-300 will-change-auto">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
                     📱
@@ -114,7 +114,7 @@ const Skills: React.FC = () => {
               </div>
 
               {/* Databases */}
-              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-all duration-300">
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-colors duration-300 will-change-auto">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
                     🗄️
@@ -138,7 +138,7 @@ const Skills: React.FC = () => {
               </div>
 
               {/* Testing & Tools */}
-              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-all duration-300">
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-colors duration-300 will-change-auto">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
                     🔧
@@ -165,7 +165,7 @@ const Skills: React.FC = () => {
               </div>
 
               {/* DevOps & CMS */}
-              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-all duration-300">
+              <div className="bg-white dark:bg-slate-900/60 backdrop-blur-sm border-2 border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500/60 dark:hover:border-emerald-400/60 rounded-2xl p-8 shadow-lg transition-colors duration-300 will-change-auto">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
                     🚀

@@ -16,6 +16,7 @@ const ParticleBackground: React.FC = () => {
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: 0, y: 0 });
   const [isDark, setIsDark] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     // Check for dark mode
@@ -44,19 +45,19 @@ const ParticleBackground: React.FC = () => {
 
     const createParticles = () => {
       const particles: Particle[] = [];
-      const particleCount = Math.min(35, Math.floor((canvas.width * canvas.height) / 20000)); // Reduced particles for better performance
+      const particleCount = Math.min(20, Math.floor((canvas.width * canvas.height) / 30000)); // Further reduced particles
       
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          size: Math.random() * 2 + 1,
-          opacity: Math.random() * 0.5 + 0.2,
+          vx: (Math.random() - 0.5) * 0.3, // Reduced velocity
+          vy: (Math.random() - 0.5) * 0.3,
+          size: Math.random() * 1.5 + 0.5, // Smaller particles
+          opacity: Math.random() * 0.4 + 0.1, // Lower opacity
           color: isDark ? 
-            `rgba(${Math.random() > 0.5 ? '16,185,129' : '6,182,212'}, ${Math.random() * 0.3 + 0.1})` :
-            `rgba(${Math.random() > 0.5 ? '16,185,129' : '6,182,212'}, ${Math.random() * 0.2 + 0.05})`
+            `rgba(${Math.random() > 0.5 ? '16,185,129' : '6,182,212'}, ${Math.random() * 0.2 + 0.05})` :
+            `rgba(${Math.random() > 0.5 ? '16,185,129' : '6,182,212'}, ${Math.random() * 0.1 + 0.02})`
         });
       }
       
@@ -68,19 +69,19 @@ const ParticleBackground: React.FC = () => {
       
       const particles = particlesRef.current;
       
-      // Draw connections
+      // Draw connections - Reduced for performance
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
-          if (distance < 100) { // Reduced connection distance for better performance
-            const opacity = (100 - distance) / 100 * 0.15;
+          if (distance < 80) { // Further reduced connection distance
+            const opacity = (80 - distance) / 80 * 0.1; // Lower opacity
             ctx.strokeStyle = isDark ? 
               `rgba(16,185,129, ${opacity})` : 
-              `rgba(16,185,129, ${opacity * 0.5})`;
-            ctx.lineWidth = 0.5;
+              `rgba(16,185,129, ${opacity * 0.3})`;
+            ctx.lineWidth = 0.3; // Thinner lines
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -111,15 +112,15 @@ const ParticleBackground: React.FC = () => {
       const mouse = mouseRef.current;
       
       particles.forEach(particle => {
-        // Mouse interaction
+        // Mouse interaction - Reduced impact
         const dx = mouse.x - particle.x;
         const dy = mouse.y - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         
-        if (distance < 80) { // Reduced mouse interaction range
-          const force = (80 - distance) / 80;
-          particle.vx += (dx / distance) * force * 0.008; // Reduced force for smoother movement
-          particle.vy += (dy / distance) * force * 0.008;
+        if (distance < 60) { // Further reduced mouse interaction range
+          const force = (60 - distance) / 60;
+          particle.vx += (dx / distance) * force * 0.005; // Further reduced force
+          particle.vy += (dy / distance) * force * 0.005;
         }
         
         // Update position
@@ -143,9 +144,20 @@ const ParticleBackground: React.FC = () => {
     };
 
     const animate = () => {
-      updateParticles();
-      drawParticles();
-      animationRef.current = requestAnimationFrame(animate);
+      // Only animate if visible and limit frame rate to 30fps
+      if (isVisible) {
+        setTimeout(() => {
+          updateParticles();
+          drawParticles();
+          animationRef.current = requestAnimationFrame(animate);
+        }, 1000 / 30);
+      } else {
+        animationRef.current = requestAnimationFrame(animate);
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      setIsVisible(!document.hidden);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -163,8 +175,9 @@ const ParticleBackground: React.FC = () => {
     animate();
 
     // Event listeners
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     window.addEventListener('resize', handleResize);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
       if (animationRef.current) {
@@ -172,6 +185,7 @@ const ParticleBackground: React.FC = () => {
       }
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [isDark]);
 

@@ -1,202 +1,130 @@
-/* Ultra Premium Skills Section Animations - Optimized for Speed */
+/* Optimized Skills Section Animations - Performance First */
 
+/* Core animations with reduced complexity */
 @keyframes float {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg) scale(1);
-  }
-  25% {
-    transform: translateY(-12px) rotate(0.8deg) scale(1.015);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-20px) rotate(0deg) scale(1);
-  }
-  75% {
-    transform: translateY(-8px) rotate(-0.8deg) scale(0.985);
+    transform: translateY(-10px);
   }
 }
 
-@keyframes float-delayed {
+@keyframes parallax-float {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg) scale(1);
+    transform: translateY(0px) translateX(0px);
   }
-  30% {
-    transform: translateY(-20px) rotate(-1deg) scale(1.03);
+  33% {
+    transform: translateY(-15px) translateX(5px);
   }
-  60% {
-    transform: translateY(-30px) rotate(1deg) scale(0.97);
-  }
-  80% {
-    transform: translateY(-5px) rotate(0deg) scale(1.01);
+  66% {
+    transform: translateY(5px) translateX(-3px);
   }
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  25% {
-    background-position: 100% 0%;
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1) rotate(45deg);
   }
   50% {
-    background-position: 100% 100%;
-  }
-  75% {
-    background-position: 0% 100%;
-  }
-  100% {
-    background-position: 0% 50%;
+    transform: scale(1.05) rotate(45deg);
   }
 }
 
-@keyframes gradient-border {
-  0% {
-    background-position: 0% 50%;
+@keyframes tilt {
+  0%, 100% {
+    transform: rotate(12deg);
   }
   50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+    transform: rotate(15deg);
   }
 }
 
-@keyframes gradient-border-fast {
-  0% {
-    background-position: 0% 50%;
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
   }
   50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+    opacity: 1;
   }
 }
 
-@keyframes scale-x {
+@keyframes shimmer {
   0% {
-    transform: scaleX(0);
-  }
-  50% {
-    transform: scaleX(0.5);
+    background-position: -200% 0;
   }
   100% {
-    transform: scaleX(1);
+    background-position: 200% 0;
   }
 }
 
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotate-x-2 {
-  0% {
-    transform: rotateX(0deg);
-  }
-  100% {
-    transform: rotateX(2deg);
-  }
-}
-
-@keyframes rotate-y-1 {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(1deg);
-  }
-}
-
-/* Animation Classes */
+/* Optimized animation classes */
 .animate-float {
-  animation: float 8s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
+  will-change: transform;
 }
 
-.animate-float-delayed {
-  animation: float-delayed 10s ease-in-out infinite;
+.animate-parallax-float {
+  animation: parallax-float 6s ease-in-out infinite;
+  will-change: transform;
 }
 
-.animate-gradient {
-  animation: gradient 4s ease infinite;
+.animate-breathe {
+  animation: breathe 3s ease-in-out infinite;
+  will-change: transform;
 }
 
-.animate-gradient-border {
-  animation: gradient-border 3s linear infinite;
+.animate-tilt {
+  animation: tilt 8s ease-in-out infinite;
+  will-change: transform;
 }
 
-.animate-gradient-border-fast {
-  animation: gradient-border-fast 2s linear infinite;
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+  will-change: opacity;
 }
 
-.animate-scale-x {
-  animation: scale-x 2s ease-out 1s forwards;
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  will-change: background-position;
 }
 
-.animate-spin-slow {
-  animation: spin-slow 8s linear infinite;
-}
-
-/* 3D Perspective Effects */
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.transform-gpu {
+/* Performance optimizations */
+.gpu-accelerated {
   transform: translateZ(0);
   backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
 }
 
-.rotate-x-2 {
-  transform: rotateX(2deg);
+/* Smooth transitions with reduced complexity */
+.transition-optimized {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: auto;
 }
 
-.rotate-y-1 {
-  transform: rotateY(1deg);
-}
-
-/* Enhanced Glassmorphism */
-.backdrop-blur-3xl {
-  backdrop-filter: blur(64px) saturate(180%);
-}
-
-/* Premium Shadow Effects */
-.shadow-3xl {
-  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
-}
-
-.shadow-4xl {
-  box-shadow: 0 45px 80px -15px rgba(0, 0, 0, 0.3);
-}
-
-/* Custom Hover Enhancements */
-.group:hover .animate-spin {
-  animation-duration: 1.5s;
-}
-
-.group:hover .animate-pulse {
-  animation-duration: 1s;
-}
-
-/* Smooth Transitions */
-* {
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Premium Glow Effects */
-.glow-emerald {
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
-}
-
-.glow-cyan {
-  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
-}
-
-.glow-blue {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-float,
+  .animate-parallax-float,
+  .animate-breathe,
+  .animate-tilt,
+  .animate-twinkle {
+    animation: none;
+  }
 }
 
 /* ===== ADVANCED EFFECTS ===== */
@@ -1176,4 +1104,72 @@ html {
 
 .animate-tilt {
   animation: tilt 10s ease-in-out infinite;
+}
+
+/* Performance-based optimizations */
+.reduced-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+.low-performance .animate-float,
+.low-performance .animate-parallax-float,
+.low-performance .animate-breathe,
+.low-performance .animate-tilt,
+.low-performance .animate-twinkle {
+  animation: none;
+}
+
+.low-performance .backdrop-blur-sm {
+  backdrop-filter: none;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.low-performance .dark .backdrop-blur-sm {
+  background: rgba(15, 23, 42, 0.8);
+}
+
+/* Optimize will-change usage */
+.animate-float:hover,
+.animate-parallax-float:hover,
+.animate-breathe:hover,
+.animate-tilt:hover {
+  will-change: auto;
+}
+
+/* Efficient GPU acceleration */
+.gpu-layer {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimized transitions */
+.transition-fast {
+  transition: all 0.15s ease;
+}
+
+.transition-medium {
+  transition: all 0.3s ease;
+}
+
+/* Container queries for responsive animations */
+@container (max-width: 768px) {
+  .animate-float,
+  .animate-parallax-float {
+    animation-duration: 2s;
+  }
+}
+
+/* Intersection observer optimizations */
+.lazy-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.lazy-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
